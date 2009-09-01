@@ -1,0 +1,240 @@
+/*	XMLObject() Website CSS Level 2	*/
+
+body {
+	font: 12px "lucida console", verdana, monospace;
+	color: #000;
+	background: #399;
+	margin: 0px;
+}
+
+#divlogo {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	/*background: url(images/biglogo.gif) no-repeat;*/
+	width: 600px;
+	height: 114px;
+}
+
+#divcontents {
+	position: absolute;
+    top: 130px;
+	left: 213px;
+	border: 3px inset;
+	background: #6cc;
+	padding: 12px;
+	width: 500px;
+}
+
+.linksToExamples {
+	margin: 3px;
+	font-size: 10px;
+	border-top: 1px solid #000;
+	padding-top: 3px;
+}
+
+#divmenu {
+	position: absolute;
+	top: 122px;
+	left: 16px;
+	background: #000;
+	border: 2px outset #f60;
+	color: #f60;
+	padding: 4px;
+	font: bold 11px "lucida console", verdana, monospace;
+	width: 180px; /* IE */
+    height: 100px;
+	voice-family: "\"}\"";
+    voice-family: inherit;
+    width: 168px; /* CSS2 */
+	height: 88px;
+}
+
+body>#divmenu {
+	width: 168px; /* CSS2 */
+	height: 88px;
+}
+
+#divmenushadow {
+	position: absolute;
+	top: 130px;
+	left: 20px;
+	background: url(images/shadow.gif);
+	width: 180px;
+	height: 100px;
+}
+
+#divhistory {
+	position: absolute;
+	color: #000;
+	background: #000;
+	top: 260px;
+	left: 20px;
+	border: 3px inset;
+	font: 9px verdana, monospace;
+	overflow: auto;
+	width: 180px; /* IE */
+	height: 180px;
+    voice-family: "\"}\"";
+    voice-family: inherit;
+    width: 174px;
+	height: 182px;
+}
+
+body>#divhistory {
+	width: 174px; /* CSS2 */
+	height: 182px;
+}
+
+
+#divhistory div dt {
+	font-weight: bold;
+}
+
+#divhistory div dl {
+	margin: 0px 1px 0px 2px;
+}
+
+#divhistory div dd {
+	margin-left: 5px;
+	padding: 2px 0px 2px 0px;
+}
+
+a:link, a:visited, a:active {
+	text-decoration: none;
+}
+
+a.menu, a.menu:visited, a.menu:active {
+	display: block;
+	color: #f60;
+	text-decoration: none;
+}
+
+a.menu:hover {
+	color: #6f3;
+	background: #000;
+	text-decoration: line-through;
+}
+
+.property {
+	color: #a00;
+	font-weight: bold;
+}
+
+.method {
+	color: #00a;
+	font-weight: bold;
+}
+
+
+p {
+	margin-top: 8px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+h1 {
+	text-align: center;
+	font-family: verdana, arial, sans-serif;
+}
+
+h2 {
+	font-size: 16px;
+	display: inline;
+/*	border: 1px outset #f60; */
+	color: #f60;
+	padding: 2px;
+	background: #000;
+}
+
+h4 {
+	color: #f60;
+	font: bold 14px "lucida console", verdana, monospace;
+	margin: 3px;
+}
+
+h5 {
+	margin-top: 3px;
+}
+
+ul {
+	list-style-type: square;
+	margin-top: 4px;
+}
+
+hr {
+	height: 1px;
+	color: #f60;
+	margin: 2px;
+}
+
+input.formText, input.formButton {
+	font: bold 12px "lucida console", verdana, monospace;
+	padding: 2px;
+	margin: 2px;
+	vertical-align: middle;
+}
+
+input.formButton {
+	background: #000;
+	color: #f60;
+	border: 1px outset #f60;
+}
+
+span.property, span.method {
+	font-size: 9px;
+	cursor: pointer;
+}
+
+.codeexample {
+	margin-left: 10px;
+	padding: 4px;
+}
+
+pre {
+	color: #000;
+	border: 2px dotted #666;
+	padding: 2px;
+	background: #ddd;
+	font: 11px "courier new", monospace;
+}
+
+.odd {
+	background: #6cc;
+}
+
+.even {
+	background: #7dd;
+}
+
+.version {
+	color: #fff;
+}
+
+.file, .constant {
+	font-weight: bold;
+}
+
+.noncompliant {
+	display: none;
+}
+
+.filename {
+	font-weight: bold;
+}
+
+dl.faq {
+	font-size: 10px;
+}
+
+dl.faq dt {
+	font-style: italic;
+	font-weight: bold;
+}
+
+dl.faq dd {
+	margin-left: 15px;
+}

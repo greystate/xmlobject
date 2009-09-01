@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<XMLObjectContent>
+
+	<page section="index">
+		<header>Welcome XML coders!</header>
+		<para>
+			This site is dedicated to an ASP project I am working on, called <emph>XMLObject</emph>.
+			It's an ASP (JScript) Object Wrapper for a number of actions, necessary when working with XML
+			and XSLT in an ASP environment.
+		</para>
+		<para>
+            I am still implementing new features whenever I get the time/urge, so if you think I'm
+			leaving some cool feature out in the cold, please <maillink addr="xmlobject@greystate.dk">send a message</maillink>,
+			and I'll consider implementing it.
+        </para>
+		<para>
+			March 2002, <maillink addr="xmlobject@greystate.dk">Chriztian Steinmeier</maillink>.
+		</para>
+	</page>
+
+	<page section="download">
+		<header>Get it now!</header>
+		<para>
+			- Use it today! ...
+		</para>
+		<para>
+            The ZIP file has a total of four files: <filename>xmlobject.asp</filename>,
+			<filename>xmlobj_constants.asp</filename> and <filename>xmlobj_resources.asp</filename> and the
+			ever-present <filename>readme.txt</filename>.
+		</para>
+		<para>
+            All you need to do is to extract the <filename>.asp</filename> files to a directory in you website (ie. <filename>/include</filename>)
+			and you're ready to use it. Read the <hyperlink url="object-reference.asp">.reference()</hyperlink> section for
+			the raw info, and the <hyperlink url="index.asp?pg=examples" target="_self">.examples()</hyperlink> section for hints on getting started.
+        </para>
+		<para>
+            Press the button below to start downloading <mdash /> if you would like to receive an e-mail whenever new versions are
+			available, check the box and fill in your e-mail address before downloading.
+        </para>
+		<html_raw>
+		<![CDATA[<form action="download.asp" name="downloadform" method="post" onsubmit="return validateForm('download', this)">
+				<input type="hidden" name="obj" value="xmlobject" />
+				<input type="hidden" name="v" value="2.8.5" />
+				<p>
+					Yes,&#160;<input class="formCheckbox" type="checkbox" name="emailupdates" value="yes" />&#160;please notify me about updates<br />
+					e-mail: <input class="formText" type="text" name="email" value="" /><br />
+					<input class="formButton" type="Submit" name="download" value="Download XMLObject()" />
+				</p>
+			</form>]]>
+		</html_raw>
+	</page>
+
+	<page section="support">
+		<header>Support/FAQ</header>
+		<para>
+            This is where the Frequently Asked Questions should be <mdash /> if there were any. Of course I have prepared some for you,
+			as is the custom with any FAQ:  
+        </para>
+		<faqitem>
+			<question>I changed a value in the StyleSheet but I can't see the changes in the transform?</question>
+			<answer>
+				You're probably using the XSLTemplate, which utilize the Application object to cache the documents.
+				To update the Application variables, call your ASP page like this:
+				<filename>filename.asp?reloadprocessors=yes</filename> (just one single time) and your changes should be visible. 
+			</answer>
+        </faqitem>
+		
+		<faqitem>
+			<question>Do you use XMLObject() on this site?</question>
+			<answer>
+				But of course :-) That's why I can do things like linking into the Reference, highlighting the chosen item, or have
+				all the pages reside in one XML file, like <hyperlink url="xml/pages.xml" caption="See for yourself... ">this one</hyperlink>.
+			</answer>
+		</faqitem>
+		
+		<faqitem>
+			<question>After using <method>saveXML</method> my file isn't updated <mdash/> why?</question>
+			<answer>
+				There are two common reasons for this one to fail <mdash/> 1: You haven't got Write Access permission to the directory you're trying to save to,
+				or 2: You're not specifying the full path, which usually looks like this: <filename>D:\somedirectory\filename.xml</filename>.
+				You can get this from the <code>Server.MapPath()</code> built-in ASP function, like this:
+				<code-ex>
+<code><![CDATA[
+<%
+   var xmlFile = "/xmlfiles/yourfile.xml";
+   var oXML = new XMLObject(xmlFile);
+   ...
+   var fullPath = Server.MapPath(xmlFile);
+   oXML.saveXML(fullPath);
+%>
+]]></code>			
+				</code-ex>
+			</answer>
+		</faqitem>
+		
+		<para>
+            Please send any questions or comments to <maillink addr="xmlobject@greystate.dk">xmlobject@greystate.dk</maillink>.
+        </para>
+	</page>
+	
+	<page section="about">
+		<header>What is XMLObject() anyway?</header>
+		<para>
+			This object handles all the repetitive and sometimes cumbersome
+			operations necessary when developing with XML and XSLT.
+		</para>
+		<para>
+            For example, when you want to write the output of a transformation to the client, you'll need
+			to do something like this:
+        </para>
+		<html_raw>
+		<![CDATA[<ol>
+				<li>Create two instances of <code>MSXML2.DOMDocument</code> (or other XMLParser Objects available).</li>
+				<li>Set the .async property for both objects to "false"</li>
+				<li>Load the XML document into one object, and the XSL StyleSheet into the other.</li>
+				<li>Perform the transformation and write the result to the output stream.</li>
+			</ol>]]>
+		</html_raw>
+		<para>
+            Usually looks something like this:
+        </para>
+		<code-ex>
+<code><![CDATA[
+<%
+   var oXML = Server.CreateObject("MSXML2.DOMDocument");
+   var oXSL = Server.CreateObject("MSXML2.DOMDocument");
+   
+   oXML.async = false;
+   oXSL.async = false;
+   
+   oXML.load(Server.MapPath("links.xml"));
+   oXSL.load(Server.MapPath("transform.xsl"));
+   
+   var oHTML = oXML.transformNode(oXSL);
+   
+   Response.Write(oHTML);
+%>
+]]></code>
+		</code-ex>
+		
+		<para>
+            When using XMLObject() all of this is handled automatically, but there's more:
+        </para>
+		<html_raw>
+			<![CDATA[<ul>
+				<li>You don't need the Server.MapPath() &mdash; just the filename or:</li>
+				<li>Alternatively, you can specify an XMLstring instead of a filename, which effectively creates a new XMLDocument</li>
+				<li>You can take advantage of caching-mechanisms, boosting performance</li>
+				<li>You can send QueryString parameters directly into the StyleSheet as easy as you pass them to your regular ASP pages</li>
+			</ul>]]>
+		</html_raw>
+	</page>
+	
+	<page section="examples">
+		<header>Code examples</header>
+		<para>
+            There isn't that much to learn, except from learning how to create the object and use its features, but
+			before we do that, you'll need to know that XMLObject() uses the <hyperlink url="http://msdn.microsoft.com/xml">MSXML Parser</hyperlink> and some of its extensions to the W3C's
+			<hyperlink url="http://www.w3.org/XML">XML Specification</hyperlink>, though anyone who's been using other XML Parsers should
+			have no trouble tweaking the code to work with them.
+        </para>
+		<para>
+			There are several ways to utilize the XMLObject from within an ASP page, but the basic principles are to
+			1) Include the <filename>xmlobject.asp</filename> file (this is assumed in all examples); 2) Create an instance of XMLObject(), using one of the constructors,
+			and 3) Get the transformed result, or perform some manipulations.
+		</para>
+		<para>
+            The code examples are all using JScript ASP. Here we go: 
+        </para>
+		
+		<code-ex id="simple">
+			<caption>Simple transformation</caption>
+			<description>
+				This example simply outputs the result of transforming <filename>links.xml</filename> with the stylesheet
+				<filename>transform.xsl</filename>. If errors occur (or the xml documents aren't well-formed), an error description is output instead.
+			</description>
+<code><![CDATA[
+<%
+   var oXML = new XMLObject("links.xml", "transform.xsl");
+   Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
+%>	
+]]></code>
+			<description>
+				You can make it even simpler by using the <constructor>quickTransformXML</constructor> function that became available in version 2.7:
+			</description>
+<code><![CDATA[
+<%= quickTransformXML("links.xml", "transform.xsl") %>
+]]></code>
+			<description><mdash /> or if you'd like to avoid any errors that might occur:</description>
+<code><![CDATA[
+<%= quickTransformXML("links.xml", "transform.xsl", XMLOBJ_NO_ERRORS) %>
+]]></code>
+		</code-ex>
+		
+		<code-ex id="parameters">
+			<caption>Using StyleSheet parameters</caption>
+			<description>
+				<para>
+					In this example, a QueryString parameter is passed to the XSLT StyleSheet before transforming, which is a very useful
+					technique which <mdash /> quite frankly <mdash /> is a major pain to perform "manually", because it involves creating an
+					XSLTemplate Object from which you get an XSLProcessor Object <mdash /> a compiled stylesheet <mdash /> that can receive
+					parameters to transfer to the stylesheet.
+				</para>
+				<para>
+					In the example, the QueryString has a variable named "sel", whose value gets
+					transferred to the stylesheet variable "selectedLink". (In the XSLT Stylesheet you would refer to this with "$selectedLink").
+				</para>
+				<para>
+                    This one uses the XSLTemplate object and caches the XML documents in Application variables which means that when you
+					change these documents you <emph>must</emph> call the .asp page using them with the following QueryString: <emph>reloadprocessors=yes</emph>, atleast once after you've uploaded the changes.
+                </para>
+			</description>
+<code><![CDATA[
+<%
+   var oXML = new XMLObject("links.xml", "transform.xsl", "sel->selectedLink");
+   Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
+%>	
+]]></code>
+		</code-ex>
+		
+		<code-ex id="combining">
+			<caption>Combining two XML documents before transforming</caption>
+			<description>
+				<para>
+                    The manipulator methods of XMLObject allows for some basic editing functionality, using some shortcuts to the XMLDOM Interface methods.
+					The implemented manipulators are <method>appendToRoot</method>, <method>removeNode</method> and <method>replaceNode</method>. We'll use
+					replaceNode here, to demonstrate the process.
+                </para>
+				<para>
+                    The first document contains an XML element named <emph>&lt;Include-File-Here/&gt;</emph>, which acts as a placeholder for the included second
+					document. When we load the first document along with the stylesheet, we use the <emph>XMLOBJ_NO_TRANSFORM</emph> constant to tell the XMLObject <emph>not</emph> to
+					perform the transform. Afterwards, we specify that our placeholder element is to be replaced with the contents of the document <filename>seconddoc.xml</filename>.
+                </para>
+				<para>
+                    Lastly, we call <method>transform</method>, and print the output to the client...
+                </para>
+			</description>
+<code><![CDATA[
+<%
+   var oXML = new XMLObject("firstdoc.xml", "stylesheet.xsl", XMLOBJ_NO_TRANSFORM);
+   oXML.replaceNode("seconddoc.xml", "//Include-File-Here");
+   oXML.transform();
+   
+   Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
+%>
+]]></code>
+		</code-ex>
+		
+		<para>
+            (More examples to come...)
+        </para>
+		
+		
+	</page>
+
+</XMLObjectContent>

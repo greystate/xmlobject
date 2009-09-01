@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<menus>
+
+	<menu>
+		<caption>.XMLObject()</caption>
+		<url>index.asp?pg=index</url>
+		<description>Start again...</description>
+	</menu>
+	<menu>
+		<caption>.about()</caption>
+		<url>index.asp?pg=about</url>
+		<description>Whodunnit + whatnot.</description>
+	</menu>
+	<menu>
+		<caption>.reference()</caption>
+		<url>object-reference.asp</url>
+		<description>Online reference - properties, methods, constructors and constants.</description>
+	</menu>
+	<menu>
+		<caption>.download()</caption>
+		<url>index.asp?pg=download</url>
+		<description>Proceed to the download section to get the files.</description>
+	</menu>
+	<menu>
+		<caption>.examples()</caption>
+		<url>index.asp?pg=examples</url>
+		<description>See how to make XMLObject do the hard work for you.</description>
+	</menu>
+	
+	<separator/>
+	<!-- <menu>
+		<caption>.history()</caption>	
+		<url type="javascript">toggleHistory()</url>
+		<description>Show history for the object.</description>
+	</menu> -->
+	<menu>
+		<caption>.support()</caption>
+		<url>index.asp?pg=support</url>
+		<description>Request features, or report bugs in XMLObject() - not that there are any...</description>
+	</menu>
+</menus>

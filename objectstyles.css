@@ -1,0 +1,140 @@
+/*		Object Style Rules		*/
+
+body {
+	font: 12px georgia, times, serif;
+	color: #000;
+	background: #fff;
+	margin: 20px;
+}
+
+h1, h2 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 20px;
+}
+
+h2 {
+	font-size: 14px;
+}
+
+/*	Header for properties & methods	*/
+h3 {
+	font: bold 16px "lucida console", "courier new", monospace; 
+	letter-spacing: 2px;
+	background: #ddd;
+	color: #000;
+	padding: 2px;
+	text-align: center;
+}
+
+/*	Header for Constant Groups */
+h4 {
+	font: bold 12px "lucida console", "courier new", monospace;
+	color: #666;
+	margin-bottom: 3px;
+	padding-bottom: 0px;
+}
+
+a:link, a:visited, a:active {
+	text-decoration: none;
+	color: #00a;
+}
+
+a:hover {
+	text-decoration: underline;
+	background: #eee;
+}
+
+code, span.property, span.method {
+	font: 12px "lucida console", "courier new", monospace;
+}
+
+code.property, code.method {
+	font-weight: bold;
+}
+
+.property {
+	color: #a00;
+}
+
+.method {
+	color: #00a;
+}
+
+.constant {
+	color: #000;
+	font-style: normal;
+	font-weight: bold;
+	font-family: "lucida console", "courier new", monospace;
+}
+
+.unfinished {
+	text-decoration: line-through;
+	font-size: 10px;
+}
+
+.parameter {
+	color: #070;
+	font-style: italic;
+	font-weight: normal;
+}
+
+.constvalue {
+	font-weight: normal;
+	color: #00f;
+}
+
+.literal {
+	color: #000;
+	font-style: normal;
+	font-weight: bold;
+	font-family: "lucida console", "courier new", monospace;
+}
+
+.string {
+	color: #399;
+}
+
+.keyword {
+	color: #69c;
+	font-weight: bold;
+}
+
+div#divproperties, div#divmethods, div#divconstructors, div#divconstants {
+	background: #eee;
+	float: left;
+	border: 1px dashed #aaa;
+	padding: 5px;
+	margin: 5px;
+/*	width: 250px;*/
+}
+
+.term {
+	border-bottom: 1px dotted #36f;
+	cursor: help;
+	font-weight: bold; 
+}
+
+.version {
+	color: #f30;
+	text-align: right;
+}
+
+hr {
+	clear: left;
+	height: 2px;
+	margin: 5px 0px;
+	color: #000;
+}
+
+.note {
+	font-size: 90%;
+	font-style: italic;
+}
+
+.hilite {
+	background: #ff6;
+	font-size: 16px;
+}
