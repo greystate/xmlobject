@@ -29,7 +29,13 @@
 	<xsl:template match="mdash">
 		<xsl:text disable-output-escaping="yes"><![CDATA[&mdash;]]></xsl:text>
 	</xsl:template>
-
+	
+	<xsl:template match="note">
+		<span style="background:#fc0; color:#000;">
+			<strong>NOTE: </strong>
+			<xsl:apply-templates />
+		</span>
+	</xsl:template>
 	
 	<xsl:template match="emph">
 		<b><xsl:apply-templates /></b>
