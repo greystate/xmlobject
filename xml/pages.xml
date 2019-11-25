@@ -9,10 +9,10 @@
 			and XSLT in an ASP environment.
 		</para>
 		<para>
-            I am still implementing new features whenever I get the time/urge, so if you think I'm
+			I am still implementing new features whenever I get the time/urge, so if you think I'm
 			leaving some cool feature out in the cold, please <maillink addr="xmlobject@greystate.dk">send a message</maillink>,
 			and I'll consider implementing it.
-        </para>
+		</para>
 		<para>
 			<note>I am no longer maintaining or developing the project&#8212;it&#8217;s only here for reference. </note>
 		</para>
@@ -27,19 +27,19 @@
 			- Use it today! ...
 		</para>
 		<para>
-            The ZIP file has a total of four files: <filename>xmlobject.asp</filename>,
+			The ZIP file has a total of four files: <filename>xmlobject.asp</filename>,
 			<filename>xmlobj_constants.asp</filename> and <filename>xmlobj_resources.asp</filename> and the
 			ever-present <filename>readme.txt</filename>.
 		</para>
 		<para>
-            All you need to do is to extract the <filename>.asp</filename> files to a directory in you website (ie. <filename>/include</filename>)
+			All you need to do is to extract the <filename>.asp</filename> files to a directory in you website (ie. <filename>/include</filename>)
 			and you're ready to use it. Read the <hyperlink url="object-reference.asp">.reference()</hyperlink> section for
 			the raw info, and the <hyperlink url="index.asp?pg=examples" target="_self">.examples()</hyperlink> section for hints on getting started.
-        </para>
+		</para>
 		<para>
-            Press the button below to start downloading <mdash /> if you would like to receive an e-mail whenever new versions are
+			Press the button below to start downloading <mdash /> if you would like to receive an e-mail whenever new versions are
 			available, check the box and fill in your e-mail address before downloading.
-        </para>
+		</para>
 		<html_raw>
 		<![CDATA[<form action="download.asp" name="downloadform" method="post" onsubmit="return validateForm('download', this)">
 				<input type="hidden" name="obj" value="xmlobject" />
@@ -56,9 +56,9 @@
 	<page section="support">
 		<header>Support/FAQ</header>
 		<para>
-            This is where the Frequently Asked Questions should be <mdash /> if there were any. Of course I have prepared some for you,
-			as is the custom with any FAQ:  
-        </para>
+			This is where the Frequently Asked Questions should be <mdash /> if there were any. Of course I have prepared some for you,
+			as is the custom with any FAQ:	
+		</para>
 		<faqitem>
 			<question>I changed a value in the StyleSheet but I can't see the changes in the transform?</question>
 			<answer>
@@ -66,7 +66,7 @@
 				To update the Application variables, call your ASP page like this:
 				<filename>filename.asp?reloadprocessors=yes</filename> (just one single time) and your changes should be visible. 
 			</answer>
-        </faqitem>
+		</faqitem>
 		
 		<faqitem>
 			<question>Do you use XMLObject() on this site?</question>
@@ -85,11 +85,11 @@
 				<code-ex>
 <code><![CDATA[
 <%
-   var xmlFile = "/xmlfiles/yourfile.xml";
-   var oXML = new XMLObject(xmlFile);
-   ...
-   var fullPath = Server.MapPath(xmlFile);
-   oXML.saveXML(fullPath);
+	 var xmlFile = "/xmlfiles/yourfile.xml";
+	 var oXML = new XMLObject(xmlFile);
+	 ...
+	 var fullPath = Server.MapPath(xmlFile);
+	 oXML.saveXML(fullPath);
 %>
 ]]></code>			
 				</code-ex>
@@ -97,8 +97,8 @@
 		</faqitem>
 		
 		<para>
-            Please send any questions or comments to <maillink addr="xmlobject@greystate.dk">xmlobject@greystate.dk</maillink>.
-        </para>
+			Please send any questions or comments to <maillink addr="xmlobject@greystate.dk">xmlobject@greystate.dk</maillink>.
+		</para>
 	</page>
 	
 	<page section="about">
@@ -108,9 +108,9 @@
 			operations necessary when developing with XML and XSLT.
 		</para>
 		<para>
-            For example, when you want to write the output of a transformation to the client, you'll need
+			For example, when you want to write the output of a transformation to the client, you'll need
 			to do something like this:
-        </para>
+		</para>
 		<html_raw>
 		<![CDATA[<ol>
 				<li>Create two instances of <code>MSXML2.DOMDocument</code> (or other XMLParser Objects available).</li>
@@ -120,30 +120,30 @@
 			</ol>]]>
 		</html_raw>
 		<para>
-            Usually looks something like this:
-        </para>
+			Usually looks something like this:
+		</para>
 		<code-ex>
 <code><![CDATA[
 <%
-   var oXML = Server.CreateObject("MSXML2.DOMDocument");
-   var oXSL = Server.CreateObject("MSXML2.DOMDocument");
-   
-   oXML.async = false;
-   oXSL.async = false;
-   
-   oXML.load(Server.MapPath("links.xml"));
-   oXSL.load(Server.MapPath("transform.xsl"));
-   
-   var oHTML = oXML.transformNode(oXSL);
-   
-   Response.Write(oHTML);
+	 var oXML = Server.CreateObject("MSXML2.DOMDocument");
+	 var oXSL = Server.CreateObject("MSXML2.DOMDocument");
+	 
+	 oXML.async = false;
+	 oXSL.async = false;
+	 
+	 oXML.load(Server.MapPath("links.xml"));
+	 oXSL.load(Server.MapPath("transform.xsl"));
+	 
+	 var oHTML = oXML.transformNode(oXSL);
+	 
+	 Response.Write(oHTML);
 %>
 ]]></code>
 		</code-ex>
 		
 		<para>
-            When using XMLObject() all of this is handled automatically, but there's more:
-        </para>
+			When using XMLObject() all of this is handled automatically, but there's more:
+		</para>
 		<html_raw>
 			<![CDATA[<ul>
 				<li>You don't need the Server.MapPath() &mdash; just the filename or:</li>
@@ -157,19 +157,19 @@
 	<page section="examples">
 		<header>Code examples</header>
 		<para>
-            There isn't that much to learn, except from learning how to create the object and use its features, but
+			There isn't that much to learn, except from learning how to create the object and use its features, but
 			before we do that, you'll need to know that XMLObject() uses the <hyperlink url="http://msdn.microsoft.com/xml">MSXML Parser</hyperlink> and some of its extensions to the W3C's
 			<hyperlink url="http://www.w3.org/XML">XML Specification</hyperlink>, though anyone who's been using other XML Parsers should
 			have no trouble tweaking the code to work with them.
-        </para>
+		</para>
 		<para>
 			There are several ways to utilize the XMLObject from within an ASP page, but the basic principles are to
 			1) Include the <filename>xmlobject.asp</filename> file (this is assumed in all examples); 2) Create an instance of XMLObject(), using one of the constructors,
 			and 3) Get the transformed result, or perform some manipulations.
 		</para>
 		<para>
-            The code examples are all using JScript ASP. Here we go: 
-        </para>
+			The code examples are all using JScript ASP. Here we go: 
+		</para>
 		
 		<code-ex id="simple">
 			<caption>Simple transformation</caption>
@@ -179,8 +179,8 @@
 			</description>
 <code><![CDATA[
 <%
-   var oXML = new XMLObject("links.xml", "transform.xsl");
-   Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
+	 var oXML = new XMLObject("links.xml", "transform.xsl");
+	 Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
 %>	
 ]]></code>
 			<description>
@@ -209,14 +209,14 @@
 					transferred to the stylesheet variable "selectedLink". (In the XSLT Stylesheet you would refer to this with "$selectedLink").
 				</para>
 				<para>
-                    This one uses the XSLTemplate object and caches the XML documents in Application variables which means that when you
+					This one uses the XSLTemplate object and caches the XML documents in Application variables which means that when you
 					change these documents you <emph>must</emph> call the .asp page using them with the following QueryString: <emph>reloadprocessors=yes</emph>, atleast once after you've uploaded the changes.
-                </para>
+				</para>
 			</description>
 <code><![CDATA[
 <%
-   var oXML = new XMLObject("links.xml", "transform.xsl", "sel->selectedLink");
-   Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
+	 var oXML = new XMLObject("links.xml", "transform.xsl", "sel->selectedLink");
+	 Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
 %>	
 ]]></code>
 		</code-ex>
@@ -225,34 +225,33 @@
 			<caption>Combining two XML documents before transforming</caption>
 			<description>
 				<para>
-                    The manipulator methods of XMLObject allows for some basic editing functionality, using some shortcuts to the XMLDOM Interface methods.
+					The manipulator methods of XMLObject allows for some basic editing functionality, using some shortcuts to the XMLDOM Interface methods.
 					The implemented manipulators are <method>appendToRoot</method>, <method>removeNode</method> and <method>replaceNode</method>. We'll use
 					replaceNode here, to demonstrate the process.
-                </para>
+				</para>
 				<para>
-                    The first document contains an XML element named <emph>&lt;Include-File-Here/&gt;</emph>, which acts as a placeholder for the included second
+					The first document contains an XML element named <emph>&lt;Include-File-Here/&gt;</emph>, which acts as a placeholder for the included second
 					document. When we load the first document along with the stylesheet, we use the <emph>XMLOBJ_NO_TRANSFORM</emph> constant to tell the XMLObject <emph>not</emph> to
 					perform the transform. Afterwards, we specify that our placeholder element is to be replaced with the contents of the document <filename>seconddoc.xml</filename>.
-                </para>
+				</para>
 				<para>
-                    Lastly, we call <method>transform</method>, and print the output to the client...
-                </para>
+					Lastly, we call <method>transform</method>, and print the output to the client...
+				</para>
 			</description>
 <code><![CDATA[
 <%
-   var oXML = new XMLObject("firstdoc.xml", "stylesheet.xsl", XMLOBJ_NO_TRANSFORM);
-   oXML.replaceNode("seconddoc.xml", "//Include-File-Here");
-   oXML.transform();
-   
-   Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
+	 var oXML = new XMLObject("firstdoc.xml", "stylesheet.xsl", XMLOBJ_NO_TRANSFORM);
+	 oXML.replaceNode("seconddoc.xml", "//Include-File-Here");
+	 oXML.transform();
+	 
+	 Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
 %>
 ]]></code>
 		</code-ex>
 		
 		<para>
-            (More examples to come...)
-        </para>
-		
+			(More examples to come...)
+		</para>
 		
 	</page>
 
