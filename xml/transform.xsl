@@ -11,48 +11,52 @@
 	</xsl:template>
 	
 	<xsl:template match="page">
-    	<xsl:apply-templates />
-    </xsl:template>
+		<xsl:apply-templates />
+	</xsl:template>
 	
 	<xsl:template match="header">
-    	<h2><xsl:value-of select="." /></h2>
-    </xsl:template>
+		<h2><xsl:value-of select="." /></h2>
+	</xsl:template>
 	
 	<!-- <xsl:template match="emdash"><xsl:text disable-output-escaping="yes"><![CDATA[&mdash;]]></xsl:text></xsl:template> -->
 	
 	<xsl:template match="para">
-    	<p>
+		<p>
 			<xsl:apply-templates />
 		</p>
-    </xsl:template>
+	</xsl:template>
 	
 	<xsl:template match="mdash">
-    	<xsl:text disable-output-escaping="yes"><![CDATA[&mdash;]]></xsl:text>
-    </xsl:template>
+		<xsl:text disable-output-escaping="yes"><![CDATA[&mdash;]]></xsl:text>
+	</xsl:template>
 
 	
 	<xsl:template match="emph">
-    	<b><xsl:apply-templates /></b>
-    </xsl:template>
+		<b><xsl:apply-templates /></b>
+	</xsl:template>
 	
 	<xsl:template match="hyperlink">
-    	<a href="{@url}"><xsl:attribute name="target">
-			<xsl:choose>
-				<xsl:when test="@target"><xsl:value-of select="@target" /></xsl:when>
-				<xsl:otherwise>_blank</xsl:otherwise>
-	        </xsl:choose></xsl:attribute><xsl:apply-templates /></a>
-    </xsl:template>
+		<a href="{@url}">
+			<xsl:attribute name="target">
+				<xsl:choose>
+					<xsl:when test="@target"><xsl:value-of select="@target" /></xsl:when>
+					<xsl:otherwise>_blank</xsl:otherwise>
+				</xsl:choose>
+			</xsl:attribute>
+			<xsl:apply-templates />
+		</a>
+	</xsl:template>
 	
 	<xsl:template match="maillink">
-    	<a href="mailto:{@addr}" class="maillink"><xsl:apply-templates /></a>
-    </xsl:template>
+		<a href="mailto:{@addr}" class="maillink"><xsl:apply-templates /></a>
+	</xsl:template>
 	
 	<xsl:template match="filename">
-    	<code class="filename"><xsl:value-of select="." /></code>
-    </xsl:template>
+		<code class="filename"><xsl:value-of select="." /></code>
+	</xsl:template>
 	
 	<xsl:template match="faqitem">
-    	<dl class="faq">
+		<dl class="faq">
 			<dt><xsl:apply-templates select="question" /></dt>
 			<dd><xsl:apply-templates select="answer" /></dd>
 		</dl>
@@ -66,49 +70,49 @@
 <!-- 		<xsl:if test="../@section = 'examples'">
 			<xsl:call-template name="createCodeExLinks" />
 		</xsl:if> -->
-    </xsl:template>
+	</xsl:template>
 	
 	<xsl:template match="code-ex/code">
-    	<div class="codeblock">
+		<div class="codeblock">
 			<xsl:apply-templates />
 		</div>
-    </xsl:template>
+	</xsl:template>
 	
 	<xsl:template match="code-ex/code">
-    	<pre><xsl:value-of select="." /></pre>
-    </xsl:template>
+		<pre><xsl:value-of select="." /></pre>
+	</xsl:template>
 	
 	<xsl:template match="code-ex/caption">
-    	<h5><xsl:value-of select="." /></h5>
-    </xsl:template>
+		<h5><xsl:value-of select="." /></h5>
+	</xsl:template>
 	
 	<xsl:template match="code-ex/description">
-    	<xsl:choose>
-            <xsl:when test="para"><xsl:apply-templates /></xsl:when>
-            <xsl:otherwise>
+		<xsl:choose>
+			<xsl:when test="para"><xsl:apply-templates /></xsl:when>
+			<xsl:otherwise>
 				<p><xsl:apply-templates /></p>
 			</xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
+		</xsl:choose>
+	</xsl:template>
 	
 	<xsl:template match="method | property">
 		<xsl:param name="message">View item in reference...</xsl:param>
-    	<span class="{name()}" onmouseover="CS_status('{$message}');return true;" onmouseout="CS_status();" title="{$message}" onclick="if (typeof(findItem) == 'function') {{ findItem('{.}');return false; }}">.<xsl:value-of select="." /><xsl:if test="name() = 'method'">()</xsl:if></span>
-    </xsl:template>
+		<span class="{name()}" onmouseover="CS_status('{$message}');return true;" onmouseout="CS_status();" title="{$message}" onclick="if (typeof(findItem) == 'function') {{ findItem('{.}');return false; }}">.<xsl:value-of select="." /><xsl:if test="name() = 'method'">()</xsl:if></span>
+	</xsl:template>
 
-<!-- This one allows for raw HTML output -->
+	<!-- This one allows for raw HTML output -->
 	<xsl:template match="html_raw">
-    	<xsl:value-of select="." disable-output-escaping="yes" />
-    </xsl:template>
+		<xsl:value-of select="." disable-output-escaping="yes" />
+	</xsl:template>
 	
 	<xsl:template name="createCodeExLinks">
 		<div class="linksToExamples">
-	        <xsl:for-each select="//page[@section = 'examples']/code-ex">
+			<xsl:for-each select="//page[@section = 'examples']/code-ex">
 				<xsl:sort select="caption" data-type="text" order="ascending" />
 				<a href="#ex{@id}"><xsl:value-of select="caption" /></a>
 				<xsl:if test="not(position()=last())"> | </xsl:if>
 			</xsl:for-each>
 		</div>
-    </xsl:template>
+	</xsl:template>
 	
 </xsl:stylesheet>
