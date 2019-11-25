@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <XMLObjectContent>
 
 	<page section="index">
 		<header>Welcome XML coders!</header>
 		<para>
-			This site is dedicated to an ASP project I am working on, called <emph>XMLObject</emph>.
+			This site is dedicated to an ASP project I was working on back in 2001&#8212;2005, called <emph>XMLObject</emph>.
 			It's an ASP (JScript) Object Wrapper for a number of actions, necessary when working with XML
 			and XSLT in an ASP environment.
 		</para>
@@ -13,6 +13,9 @@
 			leaving some cool feature out in the cold, please <maillink addr="xmlobject@greystate.dk">send a message</maillink>,
 			and I'll consider implementing it.
         </para>
+		<para>
+			<note>I am no longer maintaining or developing the project&#8212;it&#8217;s only here for reference. </note>
+		</para>
 		<para>
 			March 2002, <maillink addr="xmlobject@greystate.dk">Chriztian Steinmeier</maillink>.
 		</para>
