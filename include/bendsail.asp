@@ -13,7 +13,7 @@ function SendMail(strTo, strFrom, strSubject, strBody) {
 	if (Request.ServerVariables("SERVER_NAME") != "aptiva") {
 		var objJMail = Server.CreateObject("JMail.SMTPMail");
 		
-		objJMail.ServerAddress = "mail.greystate.dk";
+		objJMail.ServerAddress = "mail.greystate.dk"; // This nolonger works, just FYI
 		objJMail.Sender = strFrom;
 		objJMail.AddRecipient(strTo);
 		objJMail.Subject = strSubject;
