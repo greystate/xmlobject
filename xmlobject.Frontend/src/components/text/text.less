@@ -11,9 +11,34 @@
 	&.center { text-align: center; }
 	&.end { text-align: end; }
 
+	a {
+		color: @color[link];
+		text-underline-offset: 2px;
+
+		&:hover, &:focus {
+			text-underline-offset: 4px;
+		}
+	}
+
 	blockquote {
 		padding-inline-start: 3rem;
 		border-inline-start: 0.5em solid;
 		font-style: italic;
+	}
+
+	.note {
+		background: @color[highlight];
+	}
+
+	h1, h2, h3 {
+		.headerFont();
+
+		color: @color[accent];
+		background: @black;
+		display: inline-block;
+		padding-inline: 0.1em;
+		padding-block-end: 0.1em;
+		border-radius: 2px;
+		translate: -0.1em;
 	}
 }
