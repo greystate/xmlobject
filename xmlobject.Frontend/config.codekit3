@@ -9,6 +9,38 @@
   ],
   "creatorBuild" : "34680",
   "files" : {
+    "\/build" : {
+      "ft" : 65536,
+      "oA" : 1,
+      "oAP" : "\/build\/build",
+      "oF" : 0
+    },
+    "\/src\/assets\/bigheader.png" : {
+      "ft" : 32768,
+      "iS" : 11372,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/bigheader.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/src\/assets\/bigheader@2x.png" : {
+      "ft" : 32768,
+      "iS" : 101558,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/bigheader@2x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
     "\/src\/assets\/logo.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -52,6 +84,58 @@
       "oA" : 0,
       "oAP" : "\/build\/components\/index.html",
       "oF" : 0
+    },
+    "\/src\/components\/logo\/_logo.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/components\/logo\/_logo.html",
+      "oF" : 0
+    },
+    "\/src\/components\/logo\/logo.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/logo.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
+    "\/src\/components\/navigation\/_navigation.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/components\/navigation\/_navigation.html",
+      "oF" : 0
+    },
+    "\/src\/components\/navigation\/navigation.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/navigation.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
     },
     "\/src\/components\/placeholder\/_placeholder.kit" : {
       "cB" : 0,
@@ -555,7 +639,7 @@
     "displayValueWasSetByUser" : 1,
     "iconImageName" : "brackets-red",
     "iconImageWasSetByUser" : 0,
-    "lastBuiltDate" : 761120498.07174695
+    "lastBuiltDate" : 761121689.98170495
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
