@@ -1,0 +1,37 @@
+.navigation {
+	color: @color[accent];
+	font-weight: bold;
+	background: @black;
+	display: inline flex;
+	justify-content: stretch;
+	padding-inline: 1ch;
+	border: 2px outset;
+
+	ul {
+		list-style: none;
+		padding-inline: 0;
+		inline-size: 20ch;
+		max-inline-size: 100%;
+	}
+
+	a {
+		display: block;
+		text-decoration: none;
+		transition: color 220ms ease-in-out;
+
+		&::before { content: "."; }
+		&::after { content: "()"; }
+
+		&:hover, &:focus {
+			color: @color[lightup];
+		}
+	}
+
+	li:first-child a::before { content: none; }
+	li:not(:first-child) a { text-transform: lowercase; }
+	li:last-child {
+		border-block-start: 1px solid;
+		margin-block-start: 0.3em;
+		padding-block-start: 0.1em;
+	}
+}
