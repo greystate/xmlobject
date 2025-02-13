@@ -1,6 +1,14 @@
 // Code your default layout stuff in here, e.g.:
 
-// All layouts could have this main column
-[data-layout] {
-	.centered(74em);
+body[data-layout] {
+	background: @color[teal];
+	color: @black;
+
+	main {
+		display: flex;
+		flex-direction: column;
+
+		max-inline-size: @measure;
+		margin-inline: auto;
+	}
 }
