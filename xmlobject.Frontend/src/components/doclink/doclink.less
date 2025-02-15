@@ -1,0 +1,16 @@
+// doclinks
+.constant,
+.property,
+.method {
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+
+	&:hover, &:focus { text-decoration: underline; }
+}
+
+:is(.constant) { color: @color[constant]; }
+:is(.property) { color: @color[property]; }
+:is(.method) { color: @color[method]; }
+
+.constant { word-break: break-all; }
