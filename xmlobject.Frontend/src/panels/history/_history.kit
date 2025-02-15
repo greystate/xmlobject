@@ -1,0 +1,210 @@
+<section class="history text">
+	<h2>History</h2>
+	<dl class="entry">
+		<dt><time>@19-10-2002 00:45</time>&nbsp;(<span class="version">v2.8.5</span>)</dt>
+		<dd>
+			Separate caching of XML or XSL using bitflags.
+			Bugfix when loading via HTTP and using caching.
+			New optional argument for
+			<!-- $memberName: .appendToRoot() -->
+			<!-- $memberType: method -->
+			<!-- @include "/src/components/doclink/doclink" -->.
+
+			New property
+			<!-- $memberName: .useXPath -->
+			<!-- $memberType: property -->
+			<!-- @include "/src/components/doclink/doclink" -->.
+		</dd>
+	</dl>
+
+	<dl class="entry">
+		<dt><time>@25-08-2002 23:36</time>&nbsp;(<span class="version">v2.8.4</span>)</dt>
+		<dd>
+			Added support for ServerXMLHTTP when loading XML from URLs.
+		</dd>
+	</dl>
+
+	<dl class="entry">
+		<dt><time>@30-04-2002 01:23</time>&nbsp;(<span class="version">v2.8.3</span>)</dt>
+		<dd>
+			Added a new constant: <span class="constant">XMLOBJ_DEFAULT_VERSION</span> and a
+			new method: <span class="method" title="View item in reference...">.appendToNode()</span>.
+		</dd>
+	</dl>
+
+	<dl class="entry">
+		<dt><time>@22-03-2002 00:21</time>&nbsp;(<span class="version">v2.8.2</span>)</dt>
+		<dd>
+			Bugfix: Using <span class="method" title="View item in reference...">.setVersion()</span> worked, but would
+			throw an error anyway. Additionally, version 4 PROGIDs were
+			supported, but the "4.0" registered as "Not supported"...
+		</dd>
+	</dl>
+
+	<dl class="entry">
+		<dt><time>@23-02-2002 02:25</time>&nbsp;(<span class="version">v2.8.1</span>)</dt>
+		<dd>
+			Bugfix: Using <span class="method" title="View item in reference...">.replaceNode()</span> in conjunction
+			with the caching mechanisms threw an error about mixed threading
+			models.
+		</dd>
+	</dl>
+
+	<dl class="entry">
+		<dt><time>@14-01-2002 00:20</time>&nbsp;(<span class="version">v2.8</span>)</dt>
+		<dd>
+			Fixed some bugs with Version-Dependent ProgIDs, and loading via URLs.
+			Added support for the MSXML4 Parser.
+			Added the constants to the Reference section.
+		</dd>
+	</dl>
+
+	<dl class="entry">
+		<dt><time>@22-11-2001 01:31</time>&nbsp;(<span class="version">v2.7</span>)</dt>
+		<dd>
+			New function: quickTransformXML,
+			and a new constant: <span class="constant">XMLOBJ_NO_ERRORS</span>
+			was added to the interface.
+		</dd>
+	</dl>
+
+	<dl class="entry">
+		<dt><time>@01-11-2001 00:12</time>&nbsp;(<span class="version">v2.6</span>)</dt>
+		<dd>
+			Implemented <span class="method" title="View item in reference...">.getNodeText()</span>.
+		</dd>
+	</dl>
+
+	<dl class="entry">
+		<dt><time>@31-10-2001 20:35</time>&nbsp;(<span class="version">v2.6</span>)</dt>
+		<dd>
+			Fixed a bug with parameters that wasn't specified in the QueryString
+			being transferred to the stylesheet as "undefined". Now only specified
+			parameters are transferred, which allows for default values in the stylesheet.
+		</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@23-10-2001 22:38</time>&nbsp;(<span class="version">v2.5</span>)</dt>
+	<dd>
+				Implemented <span class="method" title="View item in reference...">.removeNode()</span> method.
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@23-10-2001 01:42</time>&nbsp;(<span class="version">v2.5</span>)</dt>
+	<dd>
+				Uploaded the website.
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@18-10-2001 22:01</time>&nbsp;(<span class="version">v2.5</span>)</dt>
+	<dd>
+				Implemented <span class="method" title="View item in reference...">.saveXML()</span>, <span class="method" title="View item in reference...">.replaceNode()</span>
+				and <span class="method" title="View item in reference...">.appendToRoot()</span> methods.
+				Removed interface description from <span class="file">xmlobject.asp</span>.
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@02-10-2001 21:24</time>&nbsp;(<span class="version">v2.2</span>)</dt>
+	<dd>
+				Implemented property <span class="property" title="View item in reference...">.validateOnParse</span>
+	</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@26-09-2001 22:16</time>&nbsp;(<span class="version">v2.1</span>)</dt>
+	<dd>
+				Refined handling of cached documents - if
+				another page uses the same file, and sets the
+				<span class="constant">XMLOBJ_USE_XSLTEMPLATE</span> flag, the XMLObject will
+				look for a cached version before trying to load
+				a fresh document.
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@21-09-2001 00:26</time>&nbsp;(<span class="version">v2.0</span>)</dt>
+	<dd>
+				Reworked logic for the 3rd parameter of
+				constructor to use bitflags. Enables use of
+				XSLTemplate together with <span class="constant">XMLOBJ_NO_TRANSFORM</span>.
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@18-09-2001 00:19</time>&nbsp;(<span class="version">v2.0</span>)</dt>
+	<dd>
+				Implemented <span class="method" title="View item in reference...">.validate()</span> method.
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@16-09-2001 00:25</time>&nbsp;(<span class="version">v2.0</span>)</dt>
+	<dd>
+				Implemented access to <span class="method" title="View item in reference...">.addParameter()</span> and
+				<span class="method" title="View item in reference...">.addObject()</span> in the XSLProcessor.
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@15-09-2001 02:21</time>&nbsp;(<span class="version">v2.0</span>)</dt>
+	<dd>
+				Succeeded in implementing the XSLTemplate
+				object INCLUDING parameters from QueryString
+				being transferred to the XSLProcessor!!!
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@14-09-2001 02:29</time>&nbsp;(<span class="version">v1.1</span>)</dt>
+	<dd>
+				Pieced the documentation together,
+				which contains XML and XSLT - and they are
+				using this object for showing...
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@13-09-2001 20:14</time>&nbsp;(<span class="version">v1.0</span>)</dt>
+	<dd>
+				Moved interface functions inside constructor
+				for better encapsulation.
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@30-08-2001 22:45</time>&nbsp;(<span class="version">v1.0</span>)</dt>
+	<dd>
+				Fixed the seemingly incredibly buggy
+				<span class="property" title="View item in reference...">.xml</span> + <span class="property" title="View item in reference...">.xsl</span> properties, as they hadn't
+				really been implemented -:)
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@29-08-2001 01:04</time>&nbsp;(<span class="version">v0.1</span>)</dt>
+	<dd>
+				Implemented the loading methods
+				<span class="method" title="View item in reference...">.loadXMLdoc()</span> + <span class="method" title="View item in reference...">.loadXSLdoc()</span>
+	</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@28-08-2001 00:05</time>&nbsp;(<span class="version">v0.1</span>)</dt>
+	<dd>
+				First successful tests.
+				Lots of minor bugtracking &amp; -fixing.
+			</dd>
+	</dl>
+
+	<dl class="entry">
+	<dt><time>@26-08-2001 20:44</time>&nbsp;(<span class="version">v0.1</span>)</dt>
+	<dd>
+				Project started. Interface layout. Coding.
+			</dd>
+	</dl>
+</section>
+
