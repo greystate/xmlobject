@@ -1,0 +1,540 @@
+<!-- @include "/src/kit/shared/constants" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Index — <!-- $projectName? --></title>
+<!-- @include "/src/kit/shared/head_content" -->
+<!-- @include "/src/kit/shared/script_content" -->
+</head>
+
+<body>
+<h1>Object Reference Chart</h1>
+				[ <a href="?hidedesc=yes&amp;adv=yes">Hide descriptions</a> ][
+				<a href="?adv=no&amp;hidedesc=no">Simple output</a> ]
+				<h2>Object::XMLObject()</h2>
+<p class="version">Current version is: 2.8.5</p>
+		This object was designed to achieve the following goals:
+		<ol><li>Easy and consistent access to <span class="term" title="Extensible Markup Language — whether you like it or not, you're soaking in it right now! It's the buzzword of tommorrow.">XML</span> data in <span class="term" title="Active Server Pages — a Microsoft Server Technology, enabling dynamic creation of HTML pages.">ASP</span> environments, including errorhandling</li>
+<li>Flexible transformations with <span class="term" title="Extensible Style Language Transformations — very powerful transformation language using a Template driven programming model.">XSLT</span>
+</li>
+<li>Make the XSLProcessor and caching mechanisms accessible with minimum extra efforts</li>
+<li>Enabling a one-page-only solution to the somewhat cumbersome process of setting up the XSLProcessor for passing parameters into a stylesheet and changing them on-the-fly.</li>
+</ol>
+<div id="divconstructors">
+<h3>Constructors</h3>
+<dl>
+<dt><code class="method">XMLObject()</code></dt>
+<dd>
+				Objectcreation only. Use this if you need to set parameters (ie. <span class="property">.async</span>)
+				before loading document(s).
+			</dd>
+<dt><code class="method">XMLObject(<span class="parameter ">xmlfileSpec</span>)</code></dt>
+<dd>
+				Creates the object and loads the specified XML from file or XMLstring.
+			</dd>
+<dt><code class="method">XMLObject(<span class="parameter ">xmlfileSpec</span>, <span class="parameter ">stylesheetSpec</span>)</code></dt>
+<dd>
+				Loads an XML document, a stylesheet and performs a <span class="method">.transform()</span>, leaving the result in <span class="property">.output</span>.
+			</dd>
+<dt><code class="method">XMLObject(<span class="parameter ">xmlfileSpec</span>, <span class="parameter ">stylesheetSpec</span>, <span class="parameter ">bitflags</span>)</code></dt>
+<dd>
+				Use the third argument, to define options. Using bitflags you can specify whether you want to use the XSLTemplate caching mechanism
+				(<span class="literal">XMLOBJ_USE_XSLTEMPLATE</span>) and/or, signal that the automatic call to <span class="method">.transform()</span> should not
+				be executed (<span class="literal">XMLOBJ_NO_TRANSFORM</span>).
+			</dd>
+<dt><code class="method">XMLObject(<span class="parameter ">xmlfileSpec</span>, <span class="parameter ">stylesheetSpec</span>, <span class="parameter string"><span class="literal">"</span>QryStrVar<span class="literal">-&gt;</span>StyleSheetVar<span class="literal">;</span>...<span class="literal">"</span></span>)</code></dt>
+<dd>
+				To gain the full power from XMLObject(), use this constructor as it allows you to pass
+				QueryString parameters to the stylesheet, as if it was an ASP page. Using this constructor
+				also invokes the use of Application variables, which makes the subsequent transforms much faster.
+				If you change the XML file or the stylesheet you will need to call the ASP page with the
+				following QueryString: <span class="literal">reloadprocessors=yes</span>, to be able to see any changes you've made
+				to the XML/XSL files.
+			</dd>
+<dt><code class="method">quickTransformXML(<span class="parameter ">xmlfileSpec</span>, <span class="parameter ">stylesheetSpec</span>
+		[, <span class="parameter ">XMLOBJ_NO_ERRORS</span>]
+	)</code></dt>
+<dd>
+				A shortcut to generating the object and outputting results. Simply returns the transformed result. Use <span class="literal">XMLOBJ_NO_ERRORS</span> to
+				suppress errors from the result.
+			</dd>
+</dl>
+</div>
+<div id="divproperties">
+<h3>Properties</h3>
+<dl>
+<a name="member-async">
+</a>
+<dt><code class="property">.async</code></dt>
+<dd>load method for subsequent <span class="method">.loadX*Ldoc()</span> calls. Defaults to false.</dd>
+<a name="member-error">
+</a>
+<dt><code class="property">.error</code></dt>
+<dd>flag</dd>
+<a name="member-errorDesc">
+</a>
+<dt><code class="property">.errorDesc</code></dt>
+<dd>if <span class="property">.error</span> is true, this holds the description(s)</dd>
+<a name="member-input">
+</a>
+<dt><code class="property">.input</code></dt>
+<dd>XML document (if loaded)</dd>
+<a name="member-output">
+</a>
+<dt><code class="property">.output</code></dt>
+<dd>result of <span class="method">.transform()</span>
+</dd>
+<a name="member-processor">
+</a>
+<dt><code class="property">.processor</code></dt>
+<dd>The XSLProcessor, containing the compiled stylesheet</dd>
+<a name="member-status">
+</a>
+<dt><code class="property">.status</code></dt>
+<dd>debugging property, showing the current status</dd>
+<a name="member-stylesheet">
+</a>
+<dt><code class="property">.stylesheet</code></dt>
+<dd>XSL document (or a 2nd XML doc.)</dd>
+<a name="member-useXPath">
+</a>
+<dt><code class="property">.useXPath</code></dt>
+<dd>When true (default), the selection language in queries to the <span class="property">.input</span> document is XPath.</dd>
+<a name="member-validateOnParse">
+</a>
+<dt><code class="property">.validateOnParse</code></dt>
+<dd>controls validation while loading the documents. Defaults to true.</dd>
+<a name="member-xml">
+</a>
+<dt><code class="property">.xml</code></dt>
+<dd>shortcut to <span class="property">.input.xml</span>
+</dd>
+<a name="member-xsl">
+</a>
+<dt><code class="property">.xsl</code></dt>
+<dd>shortcut to <span class="property">.stylesheet.xml</span>
+</dd>
+</dl>
+</div>
+<div id="divmethods">
+<h3>Methods</h3>
+<dl>
+<a name="member-addObject">
+</a>
+<dt><code class="method">.addObject(<span class="parameter ">oObject</span>, <span class="parameter ">NamespaceURI</span>)</code></dt>
+<dd>
+				Very advanced. Provides access to an object via <span class="term" title="Namespaces make it possible for two XML documents to refer to elements with the same name, but very different meanings. For instance, the &lt;title&gt; of a book versus the &lt;title&gt; of a Space Mission!">Namespace</span> logic, thus
+				providing enhancements to the XSLT engine.
+			</dd>
+<a name="member-addParameter">
+</a>
+<dt><code class="method">.addParameter(<span class="parameter ">sParameter</span>, <span class="parameter ">someValue</span>)</code></dt>
+<dd>
+				Transfers a value to a parameter in the XSLTemplate. This is handled automatically via the QueryString,
+				but provided in the interface for advanced users. (If you need to pass the value of a Form field to the
+				XSLTemplate you would use this method.)
+			</dd>
+<a name="member-appendToNode">
+</a>
+<dt><code class="method">.appendToNode(<span class="parameter ">xmlNodeSpec</span>, <span class="parameter ">sXPath</span>)</code></dt>
+<dd>
+				Appends the node in xmlNodeSpec (URL, filename or XMLString) to the node found with the XPath expression.
+			</dd>
+<a name="member-appendToRoot">
+</a>
+<dt><code class="method">.appendToRoot(<span class="parameter ">xmlNodeSpec</span>
+		[, <span class="parameter ">sXPath</span>]
+	)</code></dt>
+<dd>
+				Appends the node in xmlNodeSpec (URL, filename or XMLString) to the root node of the <span class="property">.input</span> document.
+				Optionally, you can specify an XPath to select a specific node in the appended document.
+			</dd>
+<a name="member-getNodeText">
+</a>
+<dt><code class="method">.getNodeText(<span class="parameter ">XPath</span>)</code></dt>
+<dd>
+				Returns the text value of the node found with the XPath expression from the <span class="property">.input</span> document.
+			</dd>
+<a name="member-loadXMLdoc">
+</a>
+<dt><code class="method">.loadXMLdoc(<span class="parameter ">sXML</span>)</code></dt>
+<dd>Loads a new XML document into <span class="property">.input</span>
+</dd>
+<a name="member-loadXSLdoc">
+</a>
+<dt><code class="method">.loadXSLdoc(<span class="parameter ">sXML</span>)</code></dt>
+<dd>Loads a new XSL document into <span class="property">.stylesheet</span>
+</dd>
+<a name="member-removeNode">
+</a>
+<dt><code class="method">.removeNode(<span class="parameter ">XPath</span>)</code></dt>
+<dd>
+				Removes the node found with the XPath expression from the <span class="property">.input</span> document.
+			</dd>
+<a name="member-replaceNode">
+</a>
+<dt><code class="method">.replaceNode(<span class="parameter ">xmlNodeSpec</span>, <span class="parameter ">XPath</span>)</code></dt>
+<dd>
+				Replaces the node found with the <span class="term" title="XML Path Language (XPath) is a general purpose query notation for addressing and filtering the elements and text of XML documents.">XPath</span>
+				expression in the <span class="property">.input</span> document with a new node created from the xmlNodeSpec parameter,
+				which take an URL, a filename, or an XMLString.
+			</dd>
+<a name="member-saveXML">
+</a>
+<dt><code class="method">.saveXML(<span class="parameter ">sPath</span>)</code></dt>
+<dd>
+				Allows you to save the XML document (the document in the <span class="property">.input</span> property).
+				The argument must be the full physical path to the file.
+			</dd>
+<a name="member-setVersion">
+</a>
+<dt><code class="method">.setVersion(<span class="parameter ">sVersion</span>)</code></dt>
+<dd>
+				changes ProgIDs used for MSXML objects.
+				(Necessary if you need the version dependent objects in MSXML3.0)
+				Call with "3.0" to use version dependent ProgIDs.
+			</dd>
+<a name="member-transform">
+</a>
+<dt><code class="method">.transform()</code></dt>
+<dd>
+				transforms the <span class="property">.input</span> with the <span class="property">.stylesheet</span> and
+				puts result in <span class="property">.output</span>.
+			</dd>
+<a name="member-validate">
+</a>
+<dt><code class="method">.validate(<span class="parameter"><span class="literal">ERR_CHECK_STYLESHEET</span>|<span class="literal">ERR_CHECK_DOCUMENT</span>|<span class="literal">ERR_CHECK_BOTH</span>
+</span>)</code></dt>
+<dd>
+				Validates the document(s) — <span class="note">For an XML document to be called valid, it has to be <span class="term" title="Well-formed refers to all start-tags having a corresponding end-tag, all elements being properly nested and the document having only one root-node.">well-formed</span> AND have a <span class="term" title="Document Type Definition ::TODO::">DTD</span>/<span class="term" title="XML Schema is another W3C XML Standard that in fact uses XML to describe XML!">Schema</span> to which it conforms.</span>
+</dd>
+</dl>
+</div>
+<div id="divconstants">
+<h3>Constants</h3>
+<dl>
+<h4>Array Indexes:</h4>
+<a name="member-XMLOBJ_PROC_QRYNAME">
+</a>
+<dt><code class="constant">XMLOBJ_PROC_QRYNAME
+		= <span class="constvalue">0</span>
+</code></dt>
+<dd></dd>
+<a name="member-XMLOBJ_PROC_XSLNAME">
+</a>
+<dt><code class="constant">XMLOBJ_PROC_XSLNAME
+		= <span class="constvalue">1</span>
+</code></dt>
+<dd></dd>
+</dl>
+<dl>
+<h4>Bitflags:</h4>
+<a name="member-XMLOBJ_USE_XSLTEMPLATE">
+</a>
+<dt><code class="constant">XMLOBJ_USE_XSLTEMPLATE
+		= <span class="constvalue">0x01</span>
+</code></dt>
+<dd></dd>
+<a name="member-XMLOBJ_NO_TRANSFORM">
+</a>
+<dt><code class="constant">XMLOBJ_NO_TRANSFORM
+		= <span class="constvalue">0x02</span>
+</code></dt>
+<dd></dd>
+<a name="member-XMLOBJ_NO_ERRORS">
+</a>
+<dt><code class="constant">XMLOBJ_NO_ERRORS
+		= <span class="constvalue">0x04</span>
+</code></dt>
+<dd></dd>
+<a name="member-XMLOBJ_NOCACHE_XML">
+</a>
+<dt><code class="constant">XMLOBJ_NOCACHE_XML
+		= <span class="constvalue">0x10</span>
+</code></dt>
+<dd></dd>
+<a name="member-XMLOBJ_NOCACHE_XSL">
+</a>
+<dt><code class="constant">XMLOBJ_NOCACHE_XSL
+		= <span class="constvalue">0x20</span>
+</code></dt>
+<dd></dd>
+<a name="member-XMLOBJ_TRANSFER_OPERATOR">
+</a>
+<dt><code class="constant">XMLOBJ_TRANSFER_OPERATOR
+		= "<span class="constvalue string">-&gt;</span>"
+	</code></dt>
+<dd></dd>
+</dl>
+<dl>
+<h4>Debugging:</h4>
+<a name="member-XMLOBJ_ALWAYS_RELOAD_PROCESSORS">
+</a>
+<dt><code class="constant">XMLOBJ_ALWAYS_RELOAD_PROCESSORS
+		= <span class="constvalue keyword">false</span>
+</code></dt>
+<dd></dd>
+</dl>
+<dl>
+<h4>Defaults:</h4>
+<a name="member-XMLOBJ_DEFAULT_VERSION">
+</a>
+<dt><code class="constant">XMLOBJ_DEFAULT_VERSION
+		= "<span class="constvalue string">default</span>"
+	</code></dt>
+<dd>The default version of MSXML to use</dd>
+</dl>
+<dl>
+<h4>Error IDs:</h4>
+<a name="member-XMLOBJERROR_INVALID_ARGUMENT">
+</a>
+<dt><code class="constant">XMLOBJERROR_INVALID_ARGUMENT</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_INTERNAL_ERROR">
+</a>
+<dt><code class="constant">XMLOBJERROR_INTERNAL_ERROR</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_VERSION_UNSUPPORTED">
+</a>
+<dt><code class="constant">XMLOBJERROR_VERSION_UNSUPPORTED</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_CANNOT_CHANGE_VERSION">
+</a>
+<dt><code class="constant">XMLOBJERROR_CANNOT_CHANGE_VERSION</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_NOT_IMPLEMENTED">
+</a>
+<dt><code class="constant">XMLOBJERROR_NOT_IMPLEMENTED</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_PROCESSOR_NOT_READY">
+</a>
+<dt><code class="constant">XMLOBJERROR_PROCESSOR_NOT_READY</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_NO_DOCUMENT">
+</a>
+<dt><code class="constant">XMLOBJERROR_NO_DOCUMENT</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_NO_STYLESHEET">
+</a>
+<dt><code class="constant">XMLOBJERROR_NO_STYLESHEET</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_NO_PROCESSOR">
+</a>
+<dt><code class="constant">XMLOBJERROR_NO_PROCESSOR</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_MISSING_DOCS">
+</a>
+<dt><code class="constant">XMLOBJERROR_MISSING_DOCS</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_OBJECT_NOT_READY">
+</a>
+<dt><code class="constant">XMLOBJERROR_OBJECT_NOT_READY</code></dt>
+<dd></dd>
+<a name="member-XMLOBJERROR_NODE_NOT_FOUND">
+</a>
+<dt><code class="constant">XMLOBJERROR_NODE_NOT_FOUND</code></dt>
+<dd></dd>
+<a name="member-RESID_NO_DESCRIPTION">
+</a>
+<dt><code class="constant">RESID_NO_DESCRIPTION</code></dt>
+<dd></dd>
+</dl>
+<dl>
+<h4>Object States:</h4>
+<a name="member-XMLOBJSTATE_EMPTY">
+</a>
+<dt><code class="constant">XMLOBJSTATE_EMPTY</code></dt>
+<dd></dd>
+<a name="member-XMLOBJSTATE_LOADING">
+</a>
+<dt><code class="constant">XMLOBJSTATE_LOADING</code></dt>
+<dd></dd>
+<a name="member-XMLOBJSTATE_READY">
+</a>
+<dt><code class="constant">XMLOBJSTATE_READY</code></dt>
+<dd></dd>
+<a name="member-XMLOBJSTATE_ERROR">
+</a>
+<dt><code class="constant">XMLOBJSTATE_ERROR</code></dt>
+<dd></dd>
+</dl>
+<dl>
+<h4>ProgIDs:</h4>
+<a name="member-DEF_XMLDOMDOCUMENT">
+</a>
+<dt><code class="constant">DEF_XMLDOMDOCUMENT
+		= "<span class="constvalue string">MSXML2.DOMDocument</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-DEF_XMLFREETHREADED">
+</a>
+<dt><code class="constant">DEF_XMLFREETHREADED
+		= "<span class="constvalue string">MSXML2.FreeThreadedDOMDocument</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-DEF_XSLTEMPLATE">
+</a>
+<dt><code class="constant">DEF_XSLTEMPLATE
+		= "<span class="constvalue string">MSXML2.XSLTemplate</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-DEF_SERVERXMLHTTP">
+</a>
+<dt><code class="constant">DEF_SERVERXMLHTTP
+		= "<span class="constvalue string">MSXML2.ServerXMLHTTP</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-PROGID_DOMDOCUMENT_30">
+</a>
+<dt><code class="constant">PROGID_DOMDOCUMENT_30
+		= "<span class="constvalue string">MSXML2.DOMDocument.3.0</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-PROGID_FREETHREADED_30">
+</a>
+<dt><code class="constant">PROGID_FREETHREADED_30
+		= "<span class="constvalue string">MSXML2.FreeThreadedDOMDocument.3.0</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-PROGID_XSLTEMPLATE_30">
+</a>
+<dt><code class="constant">PROGID_XSLTEMPLATE_30
+		= "<span class="constvalue string">MSXML2.XSLTemplate.3.0</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-PROGID_SERVERXMLHTTP_30">
+</a>
+<dt><code class="constant">PROGID_SERVERXMLHTTP_30
+		= "<span class="constvalue string">MSXML2.ServerXMLHTTP.3.0</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-PROGID_DOMDOCUMENT_40">
+</a>
+<dt><code class="constant">PROGID_DOMDOCUMENT_40
+		= "<span class="constvalue string">MSXML2.DOMDocument.4.0</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-PROGID_FREETHREADED_40">
+</a>
+<dt><code class="constant">PROGID_FREETHREADED_40
+		= "<span class="constvalue string">MSXML2.FreeThreadedDOMDocument.4.0</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-PROGID_XSLTEMPLATE_40">
+</a>
+<dt><code class="constant">PROGID_XSLTEMPLATE_40
+		= "<span class="constvalue string">MSXML2.XSLTemplate.4.0</span>"
+	</code></dt>
+<dd></dd>
+<a name="member-PROGID_SERVERXMLHTTP_40">
+</a>
+<dt><code class="constant">PROGID_SERVERXMLHTTP_40
+		= "<span class="constvalue string">MSXML2.ServerXMLHTTP.4.0</span>"
+	</code></dt>
+<dd></dd>
+</dl>
+<dl>
+<h4>Validation:</h4>
+<a name="member-ERR_CHECK_STYLESHEET">
+</a>
+<dt><code class="constant">ERR_CHECK_STYLESHEET</code></dt>
+<dd></dd>
+<a name="member-ERR_CHECK_DOCUMENT">
+</a>
+<dt><code class="constant">ERR_CHECK_DOCUMENT</code></dt>
+<dd></dd>
+<a name="member-ERR_CHECK_BOTH">
+</a>
+<dt><code class="constant">ERR_CHECK_BOTH</code></dt>
+<dd></dd>
+<a name="member-ERR_CHECK_PROCESSOR">
+</a>
+<dt><code class="constant">ERR_CHECK_PROCESSOR</code></dt>
+<dd></dd>
+<a name="member-ERR_CHECK_ALL">
+</a>
+<dt><code class="constant">ERR_CHECK_ALL</code></dt>
+<dd></dd>
+</dl>
+<dl>
+<h4>XMLDOM:</h4>
+<a name="member-NODE_ELEMENT">
+</a>
+<dt><code class="constant">NODE_ELEMENT
+		= <span class="constvalue">1</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_ATTRIBUTE">
+</a>
+<dt><code class="constant">NODE_ATTRIBUTE
+		= <span class="constvalue">2</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_TEXT">
+</a>
+<dt><code class="constant">NODE_TEXT
+		= <span class="constvalue">3</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_CDATA_SECTION">
+</a>
+<dt><code class="constant">NODE_CDATA_SECTION
+		= <span class="constvalue">4</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_ENTITY_REFERENCE">
+</a>
+<dt><code class="constant">NODE_ENTITY_REFERENCE
+		= <span class="constvalue">5</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_ENTITY">
+</a>
+<dt><code class="constant">NODE_ENTITY
+		= <span class="constvalue">6</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_PROCESSING_INSTRUCTION">
+</a>
+<dt><code class="constant">NODE_PROCESSING_INSTRUCTION
+		= <span class="constvalue">7</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_COMMENT">
+</a>
+<dt><code class="constant">NODE_COMMENT
+		= <span class="constvalue">8</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_DOCUMENT">
+</a>
+<dt><code class="constant">NODE_DOCUMENT
+		= <span class="constvalue">9</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_DOCUMENT_TYPE">
+</a>
+<dt><code class="constant">NODE_DOCUMENT_TYPE
+		= <span class="constvalue">10</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_DOCUMENT_FRAGMENT">
+</a>
+<dt><code class="constant">NODE_DOCUMENT_FRAGMENT
+		= <span class="constvalue">11</span>
+</code></dt>
+<dd></dd>
+<a name="member-NODE_NOTATION">
+</a>
+<dt><code class="constant">NODE_NOTATION
+		= <span class="constvalue">12</span>
+</code></dt>
+<dd></dd>
+</dl>
+</div>
+<hr />
+<address>Author: Chriztian Steinmeier (<a href="mailto:chriztian@steinmeier.dk">chriztian@steinmeier.dk</a>)</address>
+
+</body>
+</html>
