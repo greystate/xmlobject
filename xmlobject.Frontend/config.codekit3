@@ -41,6 +41,30 @@
       "q" : 90,
       "rq" : 75
     },
+    "\/src\/assets\/fonts\/afacad-v1-latin-700.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/fonts\/afacad-v1-latin-700.woff2",
+      "oF" : 0
+    },
+    "\/src\/assets\/fonts\/afacad-v1-latin-italic.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/fonts\/afacad-v1-latin-italic.woff2",
+      "oF" : 0
+    },
+    "\/src\/assets\/fonts\/afacad-v1-latin-regular.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/fonts\/afacad-v1-latin-regular.woff2",
+      "oF" : 0
+    },
     "\/src\/assets\/logo.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -70,6 +94,58 @@
       "mS" : 0,
       "oA" : 1,
       "oAP" : "\/build\/assets\/all.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
+    "\/src\/components\/doclink\/_doclink.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/components\/doclink\/_doclink.html",
+      "oF" : 0
+    },
+    "\/src\/components\/doclink\/doclink.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/doclink.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
+    "\/src\/components\/historyentry\/_historyentry.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/components\/historyentry\/_historyentry.html",
+      "oF" : 0
+    },
+    "\/src\/components\/historyentry\/historyentry.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/historyentry.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -329,6 +405,14 @@
       "oAP" : "\/build\/index.html",
       "oF" : 0
     },
+    "\/src\/kit\/reference\/index.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/reference\/index.html",
+      "oF" : 0
+    },
     "\/src\/kit\/shared\/_constants.kit" : {
       "cB" : 0,
       "ft" : 2048,
@@ -523,6 +607,24 @@
       "sI" : 0,
       "sU" : 0
     },
+    "\/src\/less\/webfont-afacad.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/webfont-afacad.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
     "\/src\/media\/.gitkeep" : {
       "cB" : 0,
       "ft" : 8192,
@@ -550,6 +652,32 @@
       "mS" : 0,
       "oA" : 1,
       "oAP" : "\/build\/assets\/all.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
+    "\/src\/panels\/history\/_history.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/panels\/history\/_history.html",
+      "oF" : 0
+    },
+    "\/src\/panels\/history\/history.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/history.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -639,7 +767,7 @@
     "displayValueWasSetByUser" : 1,
     "iconImageName" : "brackets-red",
     "iconImageWasSetByUser" : 0,
-    "lastBuiltDate" : 761121689.98170495
+    "lastBuiltDate" : 761176222.163293
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
