@@ -22,7 +22,9 @@
 		text-decoration: none;
 		transition: color 220ms ease-in-out;
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus,
+		&[aria-current="page"] {
 			color: @color[lightup];
 		}
 	}
