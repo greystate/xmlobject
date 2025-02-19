@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menus>
-
 	<menu>
 		<caption>XMLObject</caption>
 		<url>/</url>
@@ -22,12 +21,12 @@
 		<description>Proceed to the download section to get the files.</description>
 	</menu>
 	<menu>
-		<caption>Examples/caption>
+		<caption>Examples</caption>
 		<url>/examples/</url>
 		<description>See how to make XMLObject do the hard work for you.</description>
 	</menu>
 
-	<separator/>
+	<!-- <separator/> -->
 	<!-- <menu>
 		<caption>History</caption>
 		<url type="javascript">toggleHistory()</url>
