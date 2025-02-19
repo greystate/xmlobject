@@ -362,7 +362,7 @@ function XMLObject() {
         if (this.processor && this.processor.readyState > 1)
 			this.processor.addParameter(baseName, parameter);
 		else
-			throwError(XMLOBJERROR_PROCESSOR_NOT_READY, ".addParameter() needs an XSLProcessor in the .processor property. ["+this.processor.readyState+"]");
+			throwError(XMLOBJERROR_PROCESSOR_NOT_READY, ".addParameter() needs an XSLProcessor in the .processor property.");
     }
 
 	//	Add an object to into the stylesheet processor
