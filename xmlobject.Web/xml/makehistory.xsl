@@ -8,13 +8,13 @@
 	</xsl:template>
 
 	<xsl:template match="history">
-		<div id="divhistory">
-			<h4>History</h4>
+		<section class="history text">
+			<h2>History</h2>
 			<xsl:apply-templates select="entry">
 				<xsl:sort select="@timestamp" data-type="text" order="descending" />
 			   	<xsl:sort select="@version" data-type="text" order="descending" />
 			</xsl:apply-templates>
-		</div>
+		</section>
 	</xsl:template>
 
 	<xsl:template match="entry">
