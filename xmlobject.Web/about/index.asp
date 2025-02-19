@@ -8,11 +8,11 @@ Response.Expires = 0;
 XMLOBJ_ALWAYS_RELOAD_PROCESSORS = true;
 
 var xmlHistory = new XMLObject("../xml/history.xml", "../xml/makehistory.xsl", XMLOBJ_USE_XSLTEMPLATE);
-var xmlMenu = new XMLObject("../xml/menus.xml", "../xml/makemenu.xsl", XMLOBJ_NO_TRANSFORM);
-var xmlPages = new XMLObject("../xml/pages.xml", "../xml/transform.xsl", XMLOBJ_NO_TRANSFORM);
+var xmlMenu = new XMLObject("../xml/menus.xml", "../xml/makemenu.xsl", XMLOBJ_USE_XSLTEMPLATE | XMLOBJ_NO_TRANSFORM);
+var xmlPages = new XMLObject("../xml/pages.xml", "../xml/transform.xsl", XMLOBJ_USE_XSLTEMPLATE | XMLOBJ_NO_TRANSFORM);
 
-xmlMenu.AddParameter("pagechosen", "about");
-xmlPages.AddParameter("pagechosen", "about");
+xmlMenu.addParameter("pagechosen", "about");
+xmlPages.addParameter("pagechosen", "about");
 
 xmlMenu.transform();
 xmlPages.transform();
@@ -22,7 +22,7 @@ xmlPages.transform();
 <head>
 	<!-- #include file="../include/head_content.inc" -->
 </head>
-<body>
+<body data-layout>
 
 <!-- #include file="../include/logo.inc" -->
 
