@@ -1,0 +1,90 @@
+<section class="memberlist">
+	<header><h3>Properties</h3></header>
+
+	<dl>
+		<dt id="async"><code class="property">.async</code></dt>
+		<dd>load method for subsequent <span class="method">.loadX*Ldoc()</span> calls. Defaults to false.</dd>
+
+		<dt id="error"><code class="property">.error</code></dt>
+		<dd>flag</dd>
+
+		<dt id="errorDesc"><code class="property">.errorDesc</code></dt>
+		<dd>if <span class="property">.error</span> is true, this holds the description(s)</dd>
+
+		<dt id="input"><code class="property">.input</code></dt>
+		<dd>XML document (if loaded)</dd>
+
+		<dt id="output"><code class="property">.output</code></dt>
+		<dd>result of <span class="method">.transform()</span></dd>
+
+		<dt id="processor"><code class="property">.processor</code></dt>
+		<dd>The XSLProcessor, containing the compiled stylesheet</dd>
+
+		<dt id="status"><code class="property">.status</code></dt>
+		<dd>debugging property, showing the current status</dd>
+
+		<dt id="stylesheet"><code class="property">.stylesheet</code></dt>
+		<dd>XSL document (or a 2nd XML doc.)</dd>
+
+		<dt id="useXPath"><code class="property">.useXPath</code></dt>
+		<dd>When true (default), the selection language in queries to the <span class="property">.input</span> document is XPath.</dd>
+
+		<dt id="validateOnParse"><code class="property">.validateOnParse</code></dt>
+		<dd>controls validation while loading the documents. Defaults to true.</dd>
+
+		<dt id="xml"><code class="property">.xml</code></dt>
+		<dd>shortcut to <span class="property">.input.xml</span></dd>
+
+		<dt id="xsl"><code class="property">.xsl</code></dt>
+		<dd>shortcut to <span class="property">.stylesheet.xml</span></dd>
+
+		<dt id="replaceNode"><code class="method">.replaceNode(<span class="parameter ">xmlNodeSpec</span>, <span class="parameter ">XPath</span>)</code></dt>
+		<dd>
+			Replaces the node found with the <span class="term" title="XML Path Language (XPath) is a general purpose query notation for addressing and filtering the elements and text of XML documents.">XPath</span>
+			expression in the <span class="property">.input</span> document with a new node created from the xmlNodeSpec parameter,
+			which take an URL, a filename, or an XMLString.
+		</dd>
+
+		<dt id="saveXML"><code class="method">.saveXML(<span class="parameter ">sPath</span>)</code></dt>
+		<dd>
+						Allows you to save the XML document (the document in the <span class="property">.input</span> property).
+						The argument must be the full physical path to the file.
+					</dd>
+
+		<dt id="setVersion"><code class="method">.setVersion(<span class="parameter ">sVersion</span>)</code></dt>
+		<dd>
+						changes ProgIDs used for MSXML objects.
+						(Necessary if you need the version dependent objects in MSXML3.0)
+						Call with "3.0" to use version dependent ProgIDs.
+					</dd>
+
+		<dt id="transform"><code class="method">.transform()</code></dt>
+		<dd>
+						transforms the <span class="property">.input</span> with the <span class="property">.stylesheet</span> and
+						puts result in <span class="property">.output</span>.
+					</dd>
+
+	</dl>
+
+	<dl class="tight">
+	<h4>Bitflags:</h4>
+	<dt id="XMLOBJ_USE_XSLTEMPLATE"><code class="constant">XMLOBJ_USE_XSLTEMPLATE = <span class="constvalue">0x01</span>
+	</code></dt>
+	<dd></dd>
+	<dt id="XMLOBJ_NO_TRANSFORM"><code class="constant">XMLOBJ_NO_TRANSFORM = <span class="constvalue">0x02</span>
+	</code></dt>
+	<dd></dd>
+	<dt id="XMLOBJ_NO_ERRORS"><code class="constant">XMLOBJ_NO_ERRORS = <span class="constvalue">0x04</span>
+	</code></dt>
+	<dd></dd>
+	<dt id="XMLOBJ_NOCACHE_XML"><code class="constant">XMLOBJ_NOCACHE_XML = <span class="constvalue">0x10</span>
+	</code></dt>
+	<dd></dd>
+	<dt id="XMLOBJ_NOCACHE_XSL"><code class="constant">XMLOBJ_NOCACHE_XSL = <span class="constvalue">0x20</span>
+	</code></dt>
+	<dd></dd>
+	<dt id="XMLOBJ_TRANSFER_OPERATOR"><code class="constant">XMLOBJ_TRANSFER_OPERATOR = "<span class="constvalue string">-&gt;</span>"</code></dt>
+	<dd></dd>
+	</dl>
+
+</section>
