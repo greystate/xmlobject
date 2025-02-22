@@ -105,7 +105,7 @@ img {
   navigation: auto;
 }
 body {
-  font-family: -system-ui, Helvetica, Arial, sans-serif;
+  font-family: -apple-system-body, system-ui, Helvetica, Arial, sans-serif;
   font-size: 1.1rem;
   color: #314159;
 }
@@ -251,6 +251,42 @@ body {
 }
 .constant {
   word-break: break-all;
+}
+.memberlist {
+  background: #eee;
+  border: 1px dashed #aaa;
+  padding: 5px;
+  margin: 5px;
+}
+.memberlist dd + dt {
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
+}
+.memberlist dd {
+  -webkit-padding-start: 1.5em;
+          padding-inline-start: 1.5em;
+}
+.memberlist dl.tight dd + dt {
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+}
+.memberlist header h3 {
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  text-align: center;
+  background: #ddd;
+  color: #000;
+  padding: 2px;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+}
+.memberlist h4 {
+  font-size: 1.1em;
+  color: #666;
+  -webkit-margin-after: 3px;
+          margin-block-end: 3px;
+  -webkit-padding-after: 0;
+          padding-block-end: 0;
 }
 .sample-panel {
   background: rgba(0, 0, 0, 0.1);

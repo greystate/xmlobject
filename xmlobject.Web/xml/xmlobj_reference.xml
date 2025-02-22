@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object>
+	<current-version>2.8.5</current-version>
+	<name>XMLObject</name>
+	<author email="chriztian@steinmeier.dk">Chriztian Steinmeier</author>
+
+	<description>
+		This object was designed to achieve the following goals:
+		<ol>
+			<li>Easy and consistent access to <term description="Extensible Markup Language &#8212; whether you like it or not, you&apos;re soaking in it right now! It&apos;s the buzzword of tommorrow.">XML</term> data in <term description="Active Server Pages &#8212; a Microsoft Server Technology, enabling dynamic creation of HTML pages.">ASP</term> environments, including errorhandling</li>
+			<li>Flexible transformations with <term description="Extensible Style Language Transformations &#8212; very powerful transformation language using a Template driven programming model.">XSLT</term></li>
+			<li>Make the XSLProcessor and caching mechanisms accessible with minimum extra efforts</li>
+			<li>Enabling a one-page-only solution to the somewhat cumbersome process of setting up the XSLProcessor for passing parameters into a stylesheet and changing them on-the-fly.</li>
+		</ol>
+	</description>
+
+	<constructors>
+		<constructor>
+			<description>
+				Objectcreation only. Use this if you need to set parameters (ie. <property>async</property>)
+				before loading document(s).
+			</description>
+		</constructor>
+		<constructor>
+			<description>
+				Creates the object and loads the specified XML from file or XMLstring.
+			</description>
+			<parameters>
+				<parameter>xmlfileSpec</parameter>
+			</parameters>
+		</constructor>
+		<constructor>
+            <description>
+				Loads an XML document, a stylesheet and performs a <method>transform</method>, leaving the result in <property>output</property>.
+			</description>
+			<parameters>
+				<parameter>xmlfileSpec</parameter>
+				<parameter>stylesheetSpec</parameter>
+            </parameters>
+        </constructor>
+		<constructor>
+            <description>
+				Use the third argument, to define options. Using bitflags you can specify whether you want to use the XSLTemplate caching mechanism
+				(<literal>XMLOBJ_USE_XSLTEMPLATE</literal>) and/or, signal that the automatic call to <method>transform</method> should not
+				be executed (<literal>XMLOBJ_NO_TRANSFORM</literal>).
+			</description>
+			<parameters>
+				<parameter>xmlfileSpec</parameter>
+				<parameter>stylesheetSpec</parameter>
+	        	<parameter>bitflags</parameter>
+			</parameters>
+		</constructor>
+		<constructor>
+            <description>
+				To gain the full power from XMLObject(), use this constructor as it allows you to pass
+				QueryString parameters to the stylesheet, as if it was an ASP page. Using this constructor
+				also invokes the use of Application variables, which makes the subsequent transforms much faster.
+				If you change the XML file or the stylesheet you will need to call the ASP page with the
+				following QueryString: <literal>reloadprocessors=yes</literal>, to be able to see any changes you've made
+				to the XML/XSL files.
+			</description>
+			<parameters>
+				<parameter>xmlfileSpec</parameter>
+				<parameter>stylesheetSpec</parameter>
+	        	<parameter type="string">QryStrVar<literal>-&gt;</literal>StyleSheetVar<literal>;</literal>...</parameter>
+			</parameters>
+		</constructor>
+		<function>
+			<name>quickTransformXML</name>
+			<description>
+				A shortcut to generating the object and outputting results. Simply returns the transformed result. Use <literal>XMLOBJ_NO_ERRORS</literal> to
+				suppress errors from the result.
+			</description>
+			<parameters>
+				<parameter>xmlfileSpec</parameter>
+				<parameter>stylesheetSpec</parameter>
+				<optional>
+					<parameter><const>XMLOBJ_NO_ERRORS</const></parameter>
+				</optional>
+			</parameters>
+		</function>
+	</constructors>
+
+	<properties>
+		<property>
+			<name>input</name>
+			<description>XML document (if loaded)</description>
+		</property>
+		<property>
+			<name>stylesheet</name>
+			<description>XSL document (or a 2nd XML doc.)</description>
+		</property>
+		<property>
+			<name>processor</name>
+			<description>The XSLProcessor, containing the compiled stylesheet</description>
+		</property>
+		<property>
+			<name>output</name>
+			<description>result of <method>transform</method></description>
+		</property>
+		<property>
+			<name>xml</name>
+			<description>shortcut to <property>input.xml</property></description>
+		</property>
+		<property>
+			<name>xsl</name>
+			<description>shortcut to <property>stylesheet.xml</property></description>
+		</property>
+		<property>
+			<name>async</name>
+			<description>load method for subsequent <method>loadX*Ldoc</method> calls. Defaults to <keyword>false</keyword>.</description>
+		</property>
+		<property>
+			<name>error</name>
+			<description>flag</description>
+		</property>
+		<property>
+			<name>errorDesc</name>
+			<description>if <property>error</property> is true, this holds the description(s)</description>
+		</property>
+		<property>
+			<name>status</name>
+			<description>debugging property, showing the current status</description>
+		</property>
+		<property>
+			<name>validateOnParse</name>
+			<description>controls validation while loading the documents. Defaults to <keyword>true</keyword>.</description>
+		</property>
+		<property>
+			<name>useXPath</name>
+			<description>When <keyword>true</keyword> (default), the selection language in queries to the <property>input</property> document is XPath.</description>
+		</property>
+	</properties>
+
+	<methods>
+		<method>
+			<name>loadXMLdoc</name>
+			<parameters>
+				<parameter>sXML</parameter>
+			</parameters>
+			<description>Loads a new XML document into <property>input</property></description>
+		</method>
+		<method>
+			<name>loadXSLdoc</name>
+			<parameters>
+				<parameter>sXML</parameter>
+			</parameters>
+			<description>Loads a new XSL document into <property>stylesheet</property></description>
+		</method>
+		<method>
+			<name>transform</name>
+			<description>
+				transforms the <property>input</property> with the <property>stylesheet</property> and
+				puts result in <property>output</property>.
+			</description>
+		</method>
+		<method>
+			<name>validate</name>
+			<parameters>
+				<parameter type="enumeration">
+					<literal>ERR_CHECK_STYLESHEET</literal>
+					<literal>ERR_CHECK_DOCUMENT</literal>
+					<literal>ERR_CHECK_BOTH</literal>
+				</parameter>
+			</parameters>
+			<description>
+				Validates the document(s) &#8212; <note>For an XML document to be called valid, it has to be <term description="Well-formed refers to all start-tags having a corresponding end-tag, all elements being properly nested and the document having only one root-node.">well-formed</term> AND have a <term description="Document Type Definition ::TODO::">DTD</term>/<term description="XML Schema is another W3C XML Standard that in fact uses XML to describe XML!">Schema</term> to which it conforms.</note>
+			</description>
+		</method>
+		<method>
+			<name>setVersion</name>
+			<parameters>
+				<parameter>sVersion</parameter>
+			</parameters>
+			<description>
+				changes ProgIDs used for MSXML objects.
+				(Necessary if you need the version dependent objects in MSXML3.0)
+				Call with "3.0" to use version dependent ProgIDs.
+			</description>
+		</method>
+		<method>
+			<name>addParameter</name>
+			<parameters>
+				<parameter>sParameter</parameter>
+				<parameter>someValue</parameter>
+			</parameters>
+			<description>
+				Transfers a value to a parameter in the XSLTemplate. This is handled automatically via the QueryString,
+				but provided in the interface for advanced users. (If you need to pass the value of a Form field to the
+				XSLTemplate you would use this method.)
+			</description>
+		</method>
+		<method>
+			<name>addObject</name>
+			<parameters>
+				<parameter>oObject</parameter>
+				<parameter>NamespaceURI</parameter>
+			</parameters>
+			<description>
+				Very advanced. Provides access to an object via <term description="Namespaces make it possible for two XML documents to refer to elements with the same name, but very different meanings. For instance, the &lt;title&gt; of a book versus the &lt;title&gt; of a Space Mission!">Namespace</term> logic, thus
+				providing enhancements to the XSLT engine.
+			</description>
+		</method>
+		<method>
+			<name>saveXML</name>
+			<parameters>
+				<parameter>sPath</parameter>
+			</parameters>
+			<description>
+				Allows you to save the XML document (the document in the <property>input</property> property).
+				The argument must be the full physical path to the file.
+			</description>
+		</method>
+		<method>
+			<name>appendToRoot</name>
+			<parameters>
+				<parameter>xmlNodeSpec</parameter>
+				<optional>
+					<parameter>sXPath</parameter>
+				</optional>
+			</parameters>
+			<description>
+				Appends the node in xmlNodeSpec (URL, filename or XMLString) to the root node of the <property>input</property> document.
+				Optionally, you can specify an XPath to select a specific node in the appended document.
+			</description>
+		</method>
+		<method>
+			<name>appendToNode</name>
+			<parameters>
+				<parameter>xmlNodeSpec</parameter>
+				<parameter>sXPath</parameter>
+			</parameters>
+			<description>
+				Appends the node in xmlNodeSpec (URL, filename or XMLString) to the node found with the XPath expression.
+			</description>
+		</method>
+		<method>
+			<name>replaceNode</name>
+			<parameters>
+				<parameter>xmlNodeSpec</parameter>
+				<parameter>XPath</parameter>
+			</parameters>
+			<description>
+				Replaces the node found with the <term description="XML Path Language (XPath) is a general purpose query notation for addressing and filtering the elements and text of XML documents.">XPath</term>
+				expression in the <property>input</property> document with a new node created from the xmlNodeSpec parameter,
+				which take an URL, a filename, or an XMLString.
+			</description>
+		</method>
+		<method>
+			<name>removeNode</name>
+			<parameters>
+				<parameter>XPath</parameter>
+			</parameters>
+			<description>
+				Removes the node found with the XPath expression from the <property>input</property> document.
+			</description>
+		</method>
+		<method>
+			<name>getNodeText</name>
+			<parameters>
+				<parameter>XPath</parameter>
+			</parameters>
+			<description>
+				Returns the text value of the node found with the XPath expression from the <property>input</property> document.
+			</description>
+		</method>
+	</methods>
+	<constants>
+		<constgroup caption="Defaults">
+			<constant>
+				<name>XMLOBJ_DEFAULT_VERSION</name>
+				<value type="string">default</value>
+				<description>The default version of MSXML to use</description>
+			</constant>
+		</constgroup>
+		<constgroup caption="Error IDs">
+			<constant>
+				<name>XMLOBJERROR_INVALID_ARGUMENT</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_INTERNAL_ERROR</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_VERSION_UNSUPPORTED</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_CANNOT_CHANGE_VERSION</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_NOT_IMPLEMENTED</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_PROCESSOR_NOT_READY</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_NO_DOCUMENT</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_NO_STYLESHEET</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_NO_PROCESSOR</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_MISSING_DOCS</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_OBJECT_NOT_READY</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJERROR_NODE_NOT_FOUND</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>RESID_NO_DESCRIPTION</name>
+				<description></description>
+			</constant>
+		</constgroup>
+		<constgroup caption="Validation">
+			<constant>
+				<name>ERR_CHECK_STYLESHEET</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>ERR_CHECK_DOCUMENT</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>ERR_CHECK_BOTH</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>ERR_CHECK_PROCESSOR</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>ERR_CHECK_ALL</name>
+				<description></description>
+			</constant>
+		</constgroup>
+		<constgroup caption="Object States">
+			<constant>
+				<name>XMLOBJSTATE_EMPTY</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJSTATE_LOADING</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJSTATE_READY</name>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJSTATE_ERROR</name>
+				<description></description>
+			</constant>
+		</constgroup>
+		<constgroup caption="Bitflags">
+			<constant>
+				<name>XMLOBJ_USE_XSLTEMPLATE</name>
+				<value>0x01</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJ_NO_TRANSFORM</name>
+				<value>0x02</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJ_NO_ERRORS</name>
+				<value>0x04</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJ_NOCACHE_XML</name>
+				<value>0x10</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJ_NOCACHE_XSL</name>
+				<value>0x20</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJ_TRANSFER_OPERATOR</name>
+				<value type="string">-&gt;</value>
+				<description></description>
+			</constant>
+		</constgroup>
+		<constgroup caption="ProgIDs">
+			<constant>
+				<name>DEF_XMLDOMDOCUMENT</name>
+				<value type="string">MSXML2.DOMDocument</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>DEF_XMLFREETHREADED</name>
+				<value type="string">MSXML2.FreeThreadedDOMDocument</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>DEF_XSLTEMPLATE</name>
+				<value type="string">MSXML2.XSLTemplate</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>DEF_SERVERXMLHTTP</name>
+				<value type="string">MSXML2.ServerXMLHTTP</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>PROGID_DOMDOCUMENT_30</name>
+				<value type="string">MSXML2.DOMDocument.3.0</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>PROGID_FREETHREADED_30</name>
+				<value type="string">MSXML2.FreeThreadedDOMDocument.3.0</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>PROGID_XSLTEMPLATE_30</name>
+				<value type="string">MSXML2.XSLTemplate.3.0</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>PROGID_SERVERXMLHTTP_30</name>
+				<value type="string">MSXML2.ServerXMLHTTP.3.0</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>PROGID_DOMDOCUMENT_40</name>
+				<value type="string">MSXML2.DOMDocument.4.0</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>PROGID_FREETHREADED_40</name>
+				<value type="string">MSXML2.FreeThreadedDOMDocument.4.0</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>PROGID_XSLTEMPLATE_40</name>
+				<value type="string">MSXML2.XSLTemplate.4.0</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>PROGID_SERVERXMLHTTP_40</name>
+				<value type="string">MSXML2.ServerXMLHTTP.4.0</value>
+				<description></description>
+			</constant>
+		</constgroup>
+		<constgroup caption="Array Indexes">
+			<constant>
+				<name>XMLOBJ_PROC_QRYNAME</name>
+				<value>0</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>XMLOBJ_PROC_XSLNAME</name>
+				<value>1</value>
+				<description></description>
+			</constant>
+		</constgroup>
+		<constgroup caption="Debugging">
+			<constant>
+				<name>XMLOBJ_ALWAYS_RELOAD_PROCESSORS</name>
+				<value type="boolean">false</value>
+				<description></description>
+			</constant>
+		</constgroup>
+		<constgroup caption="XMLDOM">
+			<constant>
+				<name>NODE_ELEMENT</name>
+				<value>1</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_ATTRIBUTE</name>
+				<value>2</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_TEXT</name>
+				<value>3</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_CDATA_SECTION</name>
+				<value>4</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_ENTITY_REFERENCE</name>
+				<value>5</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_ENTITY</name>
+				<value>6</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_PROCESSING_INSTRUCTION</name>
+				<value>7</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_COMMENT</name>
+				<value>8</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_DOCUMENT</name>
+				<value>9</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_DOCUMENT_TYPE</name>
+				<value>10</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_DOCUMENT_FRAGMENT</name>
+				<value>11</value>
+				<description></description>
+			</constant>
+			<constant>
+				<name>NODE_NOTATION</name>
+				<value>12</value>
+				<description></description>
+			</constant>
+		</constgroup>
+	</constants>
+
+</object>
