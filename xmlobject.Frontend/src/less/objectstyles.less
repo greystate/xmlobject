@@ -1,0 +1,126 @@
+@import "constants";
+@import "fonts";
+
+@import "../components/memberlist/memberlist";
+
+body {
+	.bodyFont();
+
+	color: #000;
+	background: #fff;
+	margin: 20px;
+
+	main {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(50ch, 100%), 1fr));
+		gap: 2ch;
+	}
+}
+
+h1, h2 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 1.4em;
+}
+
+h2 {
+	font-size: 1.3em;
+}
+
+a:link, a:visited, a:active {
+	text-decoration: none;
+	color: #00a;
+}
+
+a:hover {
+	text-decoration: underline;
+	background: #eee;
+}
+
+code, .property, .method {
+	.monoFont();
+}
+
+code.property, code.method {
+	font-weight: bold;
+}
+
+.property {
+	color: #a00;
+}
+
+.method {
+	color: #00a;
+}
+
+.constant {
+	.monoFont();
+
+	color: #000;
+	font-style: normal;
+	font-weight: bold;
+}
+
+.unfinished {
+	text-decoration: line-through;
+	font-size: 0.8em;
+}
+
+.parameter {
+	color: #070;
+	font-style: italic;
+	font-weight: normal;
+}
+
+.constvalue {
+	font-weight: normal;
+	color: #00f;
+}
+
+.literal {
+	.monoFont();
+
+	color: #000;
+	font-style: normal;
+	font-weight: bold;
+}
+
+.string {
+	color: #399;
+}
+
+.keyword {
+	color: #69c;
+	font-weight: bold;
+}
+
+.term {
+	border-bottom: 1px dotted #36f;
+	cursor: help;
+	font-weight: bold;
+}
+
+.version {
+	color: #f30;
+	text-align: right;
+}
+
+hr {
+	clear: left;
+	height: 2px;
+	margin: 5px 0px;
+	color: #000;
+}
+
+.note {
+	font-size: 0.9em;
+	font-style: italic;
+}
+
+.hilite, :target {
+	background: #ff6;
+}
+
+:target { scroll-margin-block-start: 2em; }
