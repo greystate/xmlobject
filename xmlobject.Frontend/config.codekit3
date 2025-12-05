@@ -7,7 +7,7 @@
       "uuidString" : "5CD93953-8419-48F3-B317-31E1D510E58B"
     }
   ],
-  "creatorBuild" : "34680",
+  "creatorBuild" : "34892",
   "files" : {
     "\/build" : {
       "ft" : 65536,
@@ -101,6 +101,32 @@
       "sI" : 0,
       "sU" : 0
     },
+    "\/src\/components\/codesample\/_codesample.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/components\/codesample\/_codesample.html",
+      "oF" : 0
+    },
+    "\/src\/components\/codesample\/codesample.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/codesample.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
     "\/src\/components\/doclink\/_doclink.kit" : {
       "cB" : 0,
       "ft" : 2048,
@@ -180,6 +206,32 @@
       "mS" : 0,
       "oA" : 1,
       "oAP" : "\/build\/assets\/logo.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
+    "\/src\/components\/memberlist\/_memberlist.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/components\/memberlist\/_memberlist.html",
+      "oF" : 0
+    },
+    "\/src\/components\/memberlist\/memberlist.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/memberlist.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -589,6 +641,24 @@
       "sI" : 0,
       "sU" : 0
     },
+    "\/src\/less\/objectstyles.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/objectstyles.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
     "\/src\/less\/reset.less" : {
       "aP" : 1,
       "bl" : 0,
@@ -652,6 +722,32 @@
       "mS" : 0,
       "oA" : 1,
       "oAP" : "\/build\/assets\/all.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "rwU" : 0,
+      "sI" : 0,
+      "sU" : 0
+    },
+    "\/src\/panels\/downloadform\/_downloadform.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/panels\/downloadform\/_downloadform.html",
+      "oF" : 0
+    },
+    "\/src\/panels\/downloadform\/downloadform.less" : {
+      "aP" : 1,
+      "bl" : 0,
+      "co" : 0,
+      "eJ" : 0,
+      "ft" : 1,
+      "iI" : 0,
+      "ma" : 0,
+      "mS" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/downloadform.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -1065,8 +1161,6 @@
     "buildFolderActive" : 1,
     "buildFolderName" : "build",
     "cleanBuild" : 1,
-    "cssoForceMediaMerge" : 0,
-    "cssoRestructure" : 1,
     "environmentVariableEntries" : [
       "NODE_ENV:::production"
     ],
@@ -1703,6 +1797,9 @@
         "active" : 0,
         "optionString" : "{'skipBlankLines': false, 'ignoreComments': false}"
       },
+      "no-unassigned-vars" : {
+        "active" : 0
+      },
       "no-undef" : {
         "active" : 1,
         "optionString" : "{'typeof': false}"
@@ -1783,7 +1880,8 @@
         "active" : 0
       },
       "no-useless-escape" : {
-        "active" : 0
+        "active" : 0,
+        "optionString" : "{'allowRegexCharacters': []}"
       },
       "no-useless-rename" : {
         "active" : 0,
