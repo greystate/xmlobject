@@ -1,0 +1,39 @@
+.navigation {
+	.headerFont();
+
+	color: @color[accent];
+	font-weight: bold;
+	background: @black;
+	display: inline flex;
+	justify-content: stretch;
+	padding-inline: 2ch;
+	border: 2px outset;
+
+	ul {
+		list-style: none;
+		padding-inline: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: stretch;
+		gap: 2ch;
+	}
+
+	a {
+		display: block;
+		color: inherit;
+		text-decoration: none;
+		transition: color 220ms ease-in-out;
+
+		&:hover,
+		&:focus,
+		&[aria-current="page"] {
+			color: @color[lightup];
+		}
+	}
+
+	li:last-child {
+		border-inline-start: 1px solid;
+		margin-inline-start: 0.3em;
+		padding-inline-start: 2ch;
+	}
+}

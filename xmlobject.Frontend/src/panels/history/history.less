@@ -1,0 +1,31 @@
+.history {
+	block-size: 20em;
+	block-size: 20lh;
+
+	overflow-y: auto;
+	overflow-x: clip;
+	scroll-snap-type: y mandatory;
+
+	background: @color[light_teal];
+	border: 2px inset #000;
+
+	> * {
+		scroll-snap-align: start;
+		scroll-margin: 1.8rem;
+	}
+
+	h2 {
+		display: block;
+		color: @color[accent];
+		background: @black;
+		padding-inline: 0.8rem;
+		position: sticky;
+		top: 0;
+	}
+
+
+	.entry:nth-child(odd) {
+		background: rgba(255, 255, 255, 0.3);
+	}
+
+}

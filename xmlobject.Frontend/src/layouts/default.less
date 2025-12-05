@@ -1,0 +1,87 @@
+// Code your default layout stuff in here, e.g.:
+
+body[data-layout] {
+	background: @color[teal];
+	color: @black;
+
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	padding-block: 2rem;
+	padding-inline: 1rem;
+	max-inline-size: @measure;
+
+	> header {
+		translate: -1rem;
+	}
+
+	main {
+		border: 3px inset #000;
+		background: @color[light_teal];
+		padding: 1em;
+		// text-box: trim-both cap alphabetic;
+	}
+
+	h1 { .headerStyle(); }
+
+	@media (min-width: 800px) {
+		@supports (display: grid) {
+			max-inline-size: none;
+			display: grid;
+			grid-template-columns: minmax(0, 1rem) 22ch minmax(25ch, 75ch) minmax(0, 1rem);
+			align-content: start;
+			gap: 1rem;
+			grid-template-areas:
+				"header header     header  ."
+				".      navigation content ."
+				".      log        content ."
+				".      .          content .";
+
+			> header { grid-area: header; }
+
+			main { grid-area: content; }
+
+			.navigation {
+				transition: 120ms ease-in;
+				transition-property: box-shadow, translate;
+				grid-area: navigation;
+
+				box-shadow: 0 0 0 rgba(darken(@color[teal], 50%), 0);
+
+				&:hover, &:focus-within {
+					box-shadow: 4px 6px 4px rgba(darken(@color[teal], 50%), 0.5);
+					translate: -4px -6px;
+				}
+
+				ul {
+					inline-size: 100%;
+					flex-direction: column;
+					gap: 0.2em;
+
+					a {
+						&::before { content: "."; }
+						&::after { content: "()"; }
+					}
+
+					li:first-child a::before { content: none; }
+					li:not(:first-child) a { text-transform: lowercase; }
+					li:last-child {
+						border-inline-start: none;
+						margin-inline-start: 0;
+						padding-inline-start: 0;
+
+						border-block-start: 1px solid;
+						margin-block-start: 0.3em;
+						padding-block-start: 0.2em;
+					}
+
+				}
+			}
+
+			.history {
+				grid-area: log;
+			}
+		}
+	}
+}

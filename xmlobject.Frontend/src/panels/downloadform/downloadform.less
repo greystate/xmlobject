@@ -1,0 +1,15 @@
+.downloadform {
+	form fieldset {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		border: none;
+		padding-inline: 0;
+
+		legend { font-weight: bold; }
+
+		&[disabled] {
+			opacity: 0.5;
+		}
+	}
+}

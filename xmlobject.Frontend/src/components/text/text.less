@@ -1,0 +1,49 @@
+.text {
+	.stack();
+
+	&.contain {
+		p, ul, ol, h2, h3, h4 {
+			max-inline-size: @measure;
+		}
+	}
+
+	&.start { text-align: start; }
+	&.center { text-align: center; }
+	&.end { text-align: end; }
+
+	a:not([class]) {
+		color: @color[link];
+		text-underline-offset: 2px;
+
+		&:hover, &:focus {
+			text-underline-offset: 4px;
+		}
+	}
+
+	blockquote {
+		padding-inline-start: 3rem;
+		border-inline-start: 0.5em solid;
+		font-style: italic;
+	}
+
+	.note {
+		background: @color[highlight];
+	}
+
+	h1, h2, h3 {
+		.headerFont();
+
+		line-height: 1.3;
+	}
+
+	code {
+		.monoFont();
+
+		font-weight: bold;
+	}
+
+	.faq {
+		dt { font-weight: bold; }
+		dd { margin-inline-start: 2ch; }
+	}
+}

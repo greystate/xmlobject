@@ -1,0 +1,9 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "cp xmlobject.Frontend\/build\/assets\/app.css xmlobject.Web\/assets\ncp xmlobject.Frontend\/build\/assets\/objectstyles.css xmlobject.Web\/assets\n"
+    }
+  },
+  "openLogOnRun" : "start"
+}

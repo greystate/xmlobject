@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<history>
+	<tracking exactversion="2002-10-19T00:45+0100"/>
+
+	<entry version="2.8.5" timestamp="2002-10-19T00:45:00">
+		<description>
+			Separate caching of XML or XSL using bitflags.
+			Bugfix when loading via HTTP and using caching.
+			New optional argument for <method>appendToRoot</method>.
+			New property <property>useXPath</property>.
+		</description>
+	</entry>
+
+	<entry version="2.8.4" timestamp="2002-08-25T23:36:00">
+		<description>
+			Added support for ServerXMLHTTP when loading XML from URLs.
+		</description>
+	</entry>
+
+	<entry version="2.8.3" timestamp="2002-04-30T01:23:00">
+		<description>
+			Added a new constant: <constant>XMLOBJ_DEFAULT_VERSION</constant> and a
+			new method: <method>appendToNode</method>.
+		</description>
+	</entry>
+
+	<entry version="2.8.2" timestamp="2002-03-22T00:21:00">
+		<description>
+			Bugfix: Using <method>setVersion</method> worked, but would
+			throw an error anyway. Additionally, version 4 PROGIDs were
+			supported, but the "4.0" registered as "Not supported"...
+		</description>
+	</entry>
+
+	<entry version="2.8.1" timestamp="2002-02-23T02:25:00">
+		<description>
+			Bugfix: Using <method>replaceNode</method> in conjunction
+			with the caching mechanisms threw an error about mixed threading
+			models.
+		</description>
+	</entry>
+
+	<entry version="2.8" timestamp="2002-01-14T00:20:00">
+		<description>
+			Fixed some bugs with Version-Dependent ProgIDs, and loading via URLs.
+			Added support for the MSXML4 Parser.
+			Added the constants to the Reference section.
+		</description>
+	</entry>
+	<entry version="2.7" timestamp="2001-11-22T01:31:00">
+		<description>
+			New function: <function>quickTransformXML</function>,
+			and a new constant: <constant>XMLOBJ_NO_ERRORS</constant>
+			was added to the interface.
+		</description>
+	</entry>
+
+	<entry version="2.6" timestamp="2001-11-01T00:12:00">
+		<description>
+			Implemented <method>getNodeText</method>.
+		</description>
+	</entry>
+
+	<entry version="2.6" timestamp="2001-10-31T20:35:00">
+		<description>
+			Fixed a bug with parameters that wasn't specified in the QueryString
+			being transferred to the stylesheet as "undefined". Now only specified
+			parameters are transferred, which allows for default values in the stylesheet.
+		</description>
+	</entry>
+
+	<entry version="2.5" timestamp="2001-10-23T22:38:00">
+		<description>
+			Implemented <method>removeNode</method> method.
+		</description>
+	</entry>
+
+	<entry version="2.5" timestamp="2001-10-23T01:42:00">
+		<description>
+			Uploaded the website.
+		</description>
+	</entry>
+
+	<entry version="2.5" timestamp="2001-10-18T22:01:00">
+		<description>
+			Implemented <method>saveXML</method>, <method>replaceNode</method>
+			and <method>appendToRoot</method> methods.
+			Removed interface description from <file>xmlobject.asp</file>.
+		</description>
+	</entry>
+
+	<entry version="2.2" timestamp="2001-10-02T21:24:00">
+		<description>
+			Implemented property <property>validateOnParse</property>
+		</description>
+	</entry>
+
+	<entry version="2.1" timestamp="2001-09-26T22:16:00">
+		<description>
+			Refined handling of cached documents - if
+			another page uses the same file, and sets the
+			<constant>XMLOBJ_USE_XSLTEMPLATE</constant> flag, the XMLObject will
+			look for a cached version before trying to load
+			a fresh document.
+		</description>
+	</entry>
+
+	<entry version="2.0" timestamp="2001-09-21T00:26:00">
+		<description>
+			Reworked logic for the 3rd parameter of
+			constructor to use bitflags. Enables use of
+			XSLTemplate together with <constant>XMLOBJ_NO_TRANSFORM</constant>.
+		</description>
+	</entry>
+
+	<entry version="2.0" timestamp="2001-09-18T00:19:00">
+		<description>
+			Implemented <method>validate</method> method.
+		</description>
+	</entry>
+
+	<entry version="2.0" timestamp="2001-09-16T00:25:00">
+		<description>
+			Implemented access to <method>addParameter</method> and
+			<method>addObject</method> in the XSLProcessor.
+		</description>
+	</entry>
+
+	<entry version="2.0" timestamp="2001-09-15T02:21:00">
+		<description>
+			Succeeded in implementing the XSLTemplate
+			object INCLUDING parameters from QueryString
+			being transferred to the XSLProcessor!!!
+		</description>
+	</entry>
+
+	<entry version="1.1" timestamp="2001-09-14T02:29:00">
+		<description>
+			Pieced the documentation together,
+			which contains XML and XSLT - and they are
+			using this object for showing...
+		</description>
+	</entry>
+
+	<entry version="1.0" timestamp="2001-09-13T20:14:00">
+		<description>
+			Moved interface functions inside constructor
+			for better encapsulation.
+		</description>
+	</entry>
+
+	<entry version="1.0" timestamp="2001-08-30T22:45:00">
+		<description>
+			Fixed the seemingly incredibly buggy
+			<property>xml</property> + <property>xsl</property> properties, as they hadn't
+			really been implemented -:)
+		</description>
+	</entry>
+
+	<entry version="0.1" timestamp="2001-08-29T01:04:00">
+		<description>
+			Implemented the loading methods
+			<method>loadXMLdoc</method> + <method>loadXSLdoc</method>
+		</description>
+	</entry>
+
+	<entry version="0.1" timestamp="2001-08-28T00:05:00">
+		<description>
+			First successful tests.
+			Lots of minor bugtracking &amp; -fixing.
+		</description>
+	</entry>
+
+	<entry version="0.1" timestamp="2001-08-26T20:44:00">
+		<description>
+			Project started. Interface layout. Coding.
+		</description>
+	</entry>
+
+</history>

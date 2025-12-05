@@ -1,0 +1,435 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Afacad';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/afacad-v1-latin-regular.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Afacad';
+  font-style: italic;
+  font-weight: 400;
+  src: url('fonts/afacad-v1-latin-italic.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Afacad';
+  font-style: normal;
+  font-weight: 700;
+  src: url('fonts/afacad-v1-latin-700.woff2') format('woff2');
+}
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+img {
+  height: auto;
+}
+@view-transition {
+  navigation: auto;
+}
+body {
+  font-family: -apple-system-body, system-ui, Helvetica, Arial, sans-serif;
+  font-size: 1.1rem;
+  color: #314159;
+}
+.history .version {
+  color: #fff;
+}
+.placeholder {
+  box-sizing: border-box;
+  background: var(--bg-color, rgba(0, 100, 200, 0.3));
+  min-height: 5em;
+  border: 2px dashed rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+}
+.placeholder h3 {
+  margin: auto;
+  font-size: 1em;
+  font-weight: normal;
+}
+.placeholder h3::before {
+  content: "[ ";
+}
+.placeholder h3::after {
+  content: " ]";
+}
+.text > * + * {
+  margin-block-start: 1rem;
+}
+.text.contain p,
+.text.contain ul,
+.text.contain ol,
+.text.contain h2,
+.text.contain h3,
+.text.contain h4 {
+  max-inline-size: 75ch;
+}
+.text.start {
+  text-align: start;
+}
+.text.center {
+  text-align: center;
+}
+.text.end {
+  text-align: end;
+}
+.text a:not([class]) {
+  color: #03a;
+  text-underline-offset: 2px;
+}
+.text a:not([class]):hover,
+.text a:not([class]):focus {
+  text-underline-offset: 4px;
+}
+.text blockquote {
+  padding-inline-start: 3rem;
+  border-inline-start: 0.5em solid;
+  font-style: italic;
+}
+.text .note {
+  background: #fc0;
+}
+.text h1,
+.text h2,
+.text h3 {
+  font-family: 'Afacad', -system-ui, Helvetica, Arial, sans-serif;
+  line-height: 1.3;
+}
+.text code {
+  font-family: "Lucida Console", Insonsolata, Monaco, monospace;
+  font-weight: bold;
+}
+.text .faq dt {
+  font-weight: bold;
+}
+.text .faq dd {
+  margin-inline-start: 2ch;
+}
+.navigation {
+  font-family: 'Afacad', -system-ui, Helvetica, Arial, sans-serif;
+  color: #f60;
+  font-weight: bold;
+  background: #211;
+  display: inline flex;
+  justify-content: stretch;
+  padding-inline: 2ch;
+  border: 2px outset;
+}
+.navigation ul {
+  list-style: none;
+  padding-inline: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  gap: 2ch;
+}
+.navigation a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: color 220ms ease-in-out;
+}
+.navigation a:hover,
+.navigation a:focus,
+.navigation a[aria-current="page"] {
+  color: #6f3;
+}
+.navigation li:last-child {
+  border-inline-start: 1px solid;
+  margin-inline-start: 0.3em;
+  padding-inline-start: 2ch;
+}
+.entry {
+  font-size: 80%;
+  margin-block: 0;
+  padding-block: 0.5rem;
+  padding-inline: 0.8rem;
+}
+.entry time {
+  font-weight: bold;
+}
+.entry dt {
+  text-indent: -1ch;
+}
+.constant,
+.property,
+.method {
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+.constant:hover,
+.property:hover,
+.method:hover,
+.constant:focus,
+.property:focus,
+.method:focus {
+  text-decoration: underline;
+}
+:is(.constant) {
+  color: #000;
+}
+:is(.property) {
+  color: #a00;
+}
+:is(.method) {
+  color: #00a;
+}
+.constant {
+  word-break: break-all;
+}
+.memberlist {
+  background: #eee;
+  border: 1px dashed #aaa;
+  padding: 5px;
+  margin: 5px;
+}
+.memberlist dd + dt {
+  margin-block-start: 1em;
+}
+.memberlist dd {
+  padding-inline-start: 1.5em;
+}
+.memberlist dl.tight dd + dt {
+  margin-block-start: 0;
+}
+.memberlist header h3 {
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  text-align: center;
+  background: #ddd;
+  color: #000;
+  padding: 2px;
+  margin-block-start: 0;
+}
+.memberlist h4 {
+  font-size: 1.1em;
+  color: #666;
+  margin-block-end: 3px;
+  padding-block-end: 0;
+}
+.codesample {
+  margin-left: 10px;
+  padding: 4px;
+  -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4;
+}
+.codesample pre {
+  font-family: "Lucida Console", Insonsolata, Monaco, monospace;
+  font-size: 0.8em;
+  color: #211;
+  border: 2px dotted #aaa;
+  padding: 2px;
+  background: #eee;
+}
+.sample-panel {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.history {
+  block-size: 20em;
+  block-size: 20lh;
+  overflow-y: auto;
+  overflow-x: clip;
+  scroll-snap-type: y mandatory;
+  background: #6cc;
+  border: 2px inset #000;
+}
+.history > * {
+  scroll-snap-align: start;
+  scroll-margin: 1.8rem;
+}
+.history h2 {
+  display: block;
+  color: #f60;
+  background: #211;
+  padding-inline: 0.8rem;
+  position: sticky;
+  top: 0;
+}
+.history .entry:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.3);
+}
+.downloadform form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border: none;
+  padding-inline: 0;
+}
+.downloadform form fieldset legend {
+  font-weight: bold;
+}
+.downloadform form fieldset[disabled] {
+  opacity: 0.5;
+}
+body[data-layout] {
+  background: #399;
+  color: #211;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 2rem;
+  padding-inline: 1rem;
+  max-inline-size: 75ch;
+}
+body[data-layout] > header {
+  translate: -1rem;
+}
+body[data-layout] main {
+  border: 3px inset #000;
+  background: #6cc;
+  padding: 1em;
+}
+body[data-layout] h1 {
+  color: #f60;
+  background: #211;
+  display: inline-block;
+  padding-inline: 0.1em;
+  padding-block-end: 0.1em;
+  border-radius: 2px;
+  translate: -0.1em;
+}
+@media (min-width: 800px) {
+  @supports (display: grid) {
+    body[data-layout] {
+      max-inline-size: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1rem) 22ch minmax(25ch, 75ch) minmax(0, 1rem);
+      align-content: start;
+      gap: 1rem;
+      grid-template-areas: "header header     header  ." ".      navigation content ." ".      log        content ." ".      .          content .";
+    }
+    body[data-layout] > header {
+      grid-area: header;
+    }
+    body[data-layout] main {
+      grid-area: content;
+    }
+    body[data-layout] .navigation {
+      transition: 120ms ease-in;
+      transition-property: box-shadow, translate;
+      grid-area: navigation;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    body[data-layout] .navigation:hover,
+    body[data-layout] .navigation:focus-within {
+      box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.5);
+      translate: -4px -6px;
+    }
+    body[data-layout] .navigation ul {
+      inline-size: 100%;
+      flex-direction: column;
+      gap: 0.2em;
+    }
+    body[data-layout] .navigation ul a::before {
+      content: ".";
+    }
+    body[data-layout] .navigation ul a::after {
+      content: "()";
+    }
+    body[data-layout] .navigation ul li:first-child a::before {
+      content: none;
+    }
+    body[data-layout] .navigation ul li:not(:first-child) a {
+      text-transform: lowercase;
+    }
+    body[data-layout] .navigation ul li:last-child {
+      border-inline-start: none;
+      margin-inline-start: 0;
+      padding-inline-start: 0;
+      border-block-start: 1px solid;
+      margin-block-start: 0.3em;
+      padding-block-start: 0.2em;
+    }
+    body[data-layout] .history {
+      grid-area: log;
+    }
+  }
+}
