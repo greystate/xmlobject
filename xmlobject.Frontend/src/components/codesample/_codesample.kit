@@ -1,0 +1,14 @@
+<article class="codesample"><pre>&lt;%
+	var oXML = Server.CreateObject("MSXML2.DOMDocument");
+	var oXSL = Server.CreateObject("MSXML2.DOMDocument");
+
+	oXML.async = false;
+	oXSL.async = false;
+
+	oXML.load(Server.MapPath("links.xml"));
+	oXSL.load(Server.MapPath("transform.xsl"));
+
+	var oHTML = oXML.transformNode(oXSL);
+
+	Response.Write(oHTML);
+%&gt;</pre></article>
