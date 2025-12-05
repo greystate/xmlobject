@@ -39,7 +39,7 @@
 
 	<xsl:template match="method | property">
 		<xsl:param name="message">View item in reference...</xsl:param>
-		<a class="{name()}" title="{$message}" href="/reference/?member={.}">
+		<a class="{name()}" title="{$message}" href="/reference/#{.}">
 			<xsl:value-of select="concat('.', .)" />
 			<xsl:if test="name() = 'method'">()</xsl:if>
 		</a>

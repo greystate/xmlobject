@@ -41,15 +41,27 @@
 			available, check the box and fill in your e-mail address before downloading.
 		</para>
 		<html_raw>
-		<![CDATA[<form action="download.asp" name="downloadform" method="post" onsubmit="return validateForm('download', this)">
-				<input type="hidden" name="obj" value="xmlobject" />
-				<input type="hidden" name="v" value="2.8.5" />
-				<p>
-					Yes,&#160;<input class="formCheckbox" type="checkbox" name="emailupdates" value="yes" />&#160;please notify me about updates<br />
-					e-mail: <input class="formText" type="text" name="email" value="" /><br />
-					<input class="formButton" type="Submit" name="download" value="Download XMLObject()" />
-				</p>
-			</form>]]>
+		<![CDATA[<section class="downloadform">
+			<form action="download.asp" name="downloadform" method="post">
+				<fieldset disabled>
+					<legend>Download XMLObject()</legend>
+					<input type="hidden" name="obj" value="xmlobject">
+					<input type="hidden" name="v" value="2.8.5">
+					<div>
+						<span>Yes, </span>
+						<input class="formCheckbox" type="checkbox" name="emailupdates" id="emailupdates" value="yes">
+						<label for="emailupdates">please notify me about updates</label>
+					</div>
+					<div>
+						<label for="email">e-mail: </label>
+						<input class="formText" type="email" name="email" value="" id="email" >
+					</div>
+					<div>
+						<button type="submit" class="formButton" name="download">Download XMLObject()</button>
+					</div>
+				</fieldset>
+			</form>
+		</section>]]>
 		</html_raw>
 	</page>
 
@@ -57,17 +69,17 @@
 		<header>Support/FAQ</header>
 		<para>
 			This is where the Frequently Asked Questions should be <mdash /> if there were any. Of course I have prepared some for you,
-			as is the custom with any FAQ:	
+			as is the custom with any FAQ:
 		</para>
 		<faqitem>
 			<question>I changed a value in the StyleSheet but I can't see the changes in the transform?</question>
 			<answer>
 				You're probably using the XSLTemplate, which utilize the Application object to cache the documents.
 				To update the Application variables, call your ASP page like this:
-				<filename>filename.asp?reloadprocessors=yes</filename> (just one single time) and your changes should be visible. 
+				<filename>filename.asp?reloadprocessors=yes</filename> (just one single time) and your changes should be visible.
 			</answer>
 		</faqitem>
-		
+
 		<faqitem>
 			<question>Do you use XMLObject() on this site?</question>
 			<answer>
@@ -75,7 +87,7 @@
 				all the pages reside in one XML file, like <hyperlink url="xml/pages.xml" caption="See for yourself... ">this one</hyperlink>.
 			</answer>
 		</faqitem>
-		
+
 		<faqitem>
 			<question>After using <method>saveXML</method> my file isn't updated <mdash/> why?</question>
 			<answer>
@@ -91,16 +103,16 @@
 	 var fullPath = Server.MapPath(xmlFile);
 	 oXML.saveXML(fullPath);
 %>
-]]></code>			
+]]></code>
 				</code-ex>
 			</answer>
 		</faqitem>
-		
+
 		<para>
 			Please send any questions or comments to <maillink addr="xmlobject@greystate.dk">xmlobject@greystate.dk</maillink>.
 		</para>
 	</page>
-	
+
 	<page section="about">
 		<header>What is XMLObject() anyway?</header>
 		<para>
@@ -127,20 +139,20 @@
 <%
 	 var oXML = Server.CreateObject("MSXML2.DOMDocument");
 	 var oXSL = Server.CreateObject("MSXML2.DOMDocument");
-	 
+
 	 oXML.async = false;
 	 oXSL.async = false;
-	 
+
 	 oXML.load(Server.MapPath("links.xml"));
 	 oXSL.load(Server.MapPath("transform.xsl"));
-	 
+
 	 var oHTML = oXML.transformNode(oXSL);
-	 
+
 	 Response.Write(oHTML);
 %>
 ]]></code>
 		</code-ex>
-		
+
 		<para>
 			When using XMLObject() all of this is handled automatically, but there's more:
 		</para>
@@ -153,7 +165,7 @@
 			</ul>]]>
 		</html_raw>
 	</page>
-	
+
 	<page section="examples">
 		<header>Code examples</header>
 		<para>
@@ -168,9 +180,9 @@
 			and 3) Get the transformed result, or perform some manipulations.
 		</para>
 		<para>
-			The code examples are all using JScript ASP. Here we go: 
+			The code examples are all using JScript ASP. Here we go:
 		</para>
-		
+
 		<code-ex id="simple">
 			<caption>Simple transformation</caption>
 			<description>
@@ -181,7 +193,7 @@
 <%
 	 var oXML = new XMLObject("links.xml", "transform.xsl");
 	 Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
-%>	
+%>
 ]]></code>
 			<description>
 				You can make it even simpler by using the <constructor>quickTransformXML</constructor> function that became available in version 2.7:
@@ -194,7 +206,7 @@
 <%= quickTransformXML("links.xml", "transform.xsl", XMLOBJ_NO_ERRORS) %>
 ]]></code>
 		</code-ex>
-		
+
 		<code-ex id="parameters">
 			<caption>Using StyleSheet parameters</caption>
 			<description>
@@ -217,10 +229,10 @@
 <%
 	 var oXML = new XMLObject("links.xml", "transform.xsl", "sel->selectedLink");
 	 Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
-%>	
+%>
 ]]></code>
 		</code-ex>
-		
+
 		<code-ex id="combining">
 			<caption>Combining two XML documents before transforming</caption>
 			<description>
@@ -243,16 +255,16 @@
 	 var oXML = new XMLObject("firstdoc.xml", "stylesheet.xsl", XMLOBJ_NO_TRANSFORM);
 	 oXML.replaceNode("seconddoc.xml", "//Include-File-Here");
 	 oXML.transform();
-	 
+
 	 Response.Write((oXML.error ? oXML.errorDesc : oXML.output));
 %>
 ]]></code>
 		</code-ex>
-		
+
 		<para>
 			(More examples to come...)
 		</para>
-		
+
 	</page>
 
 </XMLObjectContent>

@@ -71,10 +71,10 @@
 	</xsl:template>
 
 	<xsl:template match="code-ex">
-		<div class="codeexample" id="codeex-{@id}">
-			<a name="ex{@id}"></a>
+		<article class="codesample">
+			<xsl:if test="@id"><xsl:attribute name="id"><xsl:value-of select="concat('codeex-', @id)" /></xsl:attribute></xsl:if>
 			<xsl:apply-templates />
-		</div>
+		</article>
 <!-- 		<xsl:if test="../@section = 'examples'">
 			<xsl:call-template name="createCodeExLinks" />
 		</xsl:if> -->
@@ -91,7 +91,7 @@
 	</xsl:template>
 
 	<xsl:template match="code-ex/caption">
-		<h5><xsl:value-of select="." /></h5>
+		<h2><xsl:value-of select="." /></h2>
 	</xsl:template>
 
 	<xsl:template match="code-ex/description">
@@ -105,7 +105,10 @@
 
 	<xsl:template match="method | property">
 		<xsl:param name="message">View item in reference...</xsl:param>
-		<a class="{name()}" title="{$message}" href="/reference/?member={.}">.<xsl:value-of select="." /><xsl:if test="name() = 'method'">()</xsl:if></a>
+		<a class="{name()}" title="{$message}" href="/reference/#{.}">
+			<xsl:value-of select="concat('.', .)" />
+			<xsl:if test="name() = 'method'">()</xsl:if>
+		</a>
 	</xsl:template>
 
 	<!-- This one allows for raw HTML output -->
